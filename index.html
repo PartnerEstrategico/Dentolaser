@@ -122,22 +122,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .stat-l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;}
 
 /* CUMPLIMIENTO */
-.cal-grid{display:grid;gap:14px;margin-bottom:14px;}
-.week-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
-.week-hdr{background:var(--primary2);color:#fff;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;}
-.week-hdr-lbl{font-weight:700;font-size:13px;}
-.week-badge{border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;}
-.wb-ok{background:#d1fae5;color:#065f46;}
-.wb-warn{background:#fef3c7;color:#92400e;}
-.wb-bad{background:#fee2e2;color:#991b1b;}
-.days-row{display:flex;gap:8px;padding:12px 16px;flex-wrap:wrap;}
-.day-chip{border-radius:8px;padding:8px 12px;font-size:11px;font-weight:700;text-align:center;min-width:78px;position:relative;}
-.day-chip.ok{background:#d1fae5;color:#064e3b;border:1px solid #6ee7b7;}
-.day-chip.missing{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5;}
-.day-chip.today{background:#fef9ec;color:#78350f;border:2px dashed #fcd34d;}
-.day-chip .chip-icon{font-size:14px;display:block;margin-bottom:2px;}
-.day-chip .chip-lbl{display:block;font-size:10px;font-weight:600;}
 .cum-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+@media(max-width:860px){.cum-kpi-row{grid-template-columns:repeat(2,1fr);}}
 .cum-kpi{border-radius:var(--radius);padding:14px 16px;border:2px solid;text-align:center;}
 .cum-kpi.ok{background:#d1fae5;border-color:#6ee7b7;}
 .cum-kpi.bad{background:#fee2e2;border-color:#fca5a5;}
@@ -149,15 +135,42 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .cum-kpi.warn .cum-kpi-n{color:#92400e;}
 .cum-kpi.info .cum-kpi-n{color:#1e3a8a;}
 .cum-kpi-l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-top:5px;font-weight:600;}
+/* month cards */
+.cum-month-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.cmh{padding:10px 16px;display:flex;flex-direction:column;}
+.cmh-title{font-size:14px;font-weight:800;color:#fff;}
+.cmh-sub{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px;}
+.cmb{display:flex;align-items:center;gap:14px;padding:14px 16px;}
+.cm-ring-wrap{position:relative;flex-shrink:0;width:110px;height:110px;}
+.cm-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:11px;font-weight:800;line-height:1.3;color:var(--text);}
+.cm-stats{flex:1;font-size:12px;}
+.cm-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);}
+.cm-stat:last-child{border-bottom:none;}
+.cm-stat-l{color:var(--text2);}
+.cm-stat-v{font-weight:700;}
+/* calendar */
+.cal-grid{display:grid;gap:10px;margin-bottom:14px;}
+.week-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.week-hdr{background:var(--primary2);color:#fff;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;}
+.week-hdr-lbl{font-weight:700;font-size:12px;}
+.week-badge{border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;}
+.wb-ok{background:#d1fae5;color:#065f46;}.wb-warn{background:#fef3c7;color:#92400e;}
+.wb-bad{background:#fee2e2;color:#991b1b;}.wb-pend{background:#e0f2fe;color:#075985;}
+.days-row{display:flex;gap:7px;padding:10px 16px;flex-wrap:wrap;}
+.day-chip{border-radius:7px;padding:7px 10px;font-size:11px;font-weight:700;text-align:center;min-width:82px;}
+.day-chip.ok{background:#d1fae5;color:#064e3b;border:1px solid #6ee7b7;}
+.day-chip.missing{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5;}
+.day-chip.today{background:#fef9ec;color:#78350f;border:2px dashed #fcd34d;}
+.chip-icon{font-size:13px;display:block;margin-bottom:2px;}
+.chip-lbl{display:block;font-size:9px;font-weight:600;opacity:0.75;margin-top:1px;}
+/* dow */
 .dow-analysis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}
 .dow-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;}
-.dow-box-n{font-size:22px;font-weight:900;}
-.dow-box-ok{color:var(--green);}
-.dow-box-bad{color:var(--red);}
-.dow-box-l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;}
-.dow-box-rate{font-size:11px;font-weight:700;margin-top:2px;}
-.streak-bar{height:12px;border-radius:6px;background:var(--bg);overflow:hidden;margin-top:8px;}
-.streak-fill{height:100%;border-radius:6px;}
+.dow-n{font-size:20px;font-weight:900;}
+.dow-l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;}
+.dow-rate{font-size:11px;font-weight:700;margin-top:4px;}
+.streak-bar{height:8px;border-radius:4px;background:var(--bg);overflow:hidden;margin-top:6px;}
+.streak-fill{height:100%;border-radius:4px;}
 </style>
 </head>
 <body>
@@ -376,6 +389,97 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   </div>
 </div>
 
+<!-- ══ CUMPLIMIENTO ══ -->
+<div class="page" id="p-cumplimiento">
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 9 JUNIO 2026</p>
+
+  <!-- KPIs globales -->
+  <div class="cum-kpi-row">
+    <div class="cum-kpi ok"><div class="cum-kpi-n">16</div><div class="cum-kpi-l">Días con base enviada</div></div>
+    <div class="cum-kpi bad"><div class="cum-kpi-n">13</div><div class="cum-kpi-l">Días sin base enviada</div></div>
+    <div class="cum-kpi warn"><div class="cum-kpi-n">43.3%</div><div class="cum-kpi-l">Tasa de incumplimiento global</div></div>
+    <div class="cum-kpi info"><div class="cum-kpi-n">29</div><div class="cum-kpi-l">Días hábiles transcurridos</div></div>
+  </div>
+
+  <!-- Comparativo por mes -->
+  <p class="lbl">COMPARATIVO POR MES</p>
+  <div class="three" style="margin-bottom:14px;">
+    <div class="cum-month-card">
+      <div class="cmh" style="background:#0c41ab;">
+        <span class="cmh-title">Mayo 2026</span>
+        <span class="cmh-sub">Lun 4 may → Sáb 30 may</span>
+      </div>
+      <div class="cmb">
+        <div class="cm-ring-wrap"><canvas id="ring-mayo" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-mayo-lbl"></div></div>
+        <div class="cm-stats" id="stats-mayo"></div>
+      </div>
+    </div>
+    <div class="cum-month-card">
+      <div class="cmh" style="background:#1a5c3a;">
+        <span class="cmh-title">Junio 2026</span>
+        <span class="cmh-sub">Lun 1 jun → Hoy 9 jun</span>
+      </div>
+      <div class="cmb">
+        <div class="cm-ring-wrap"><canvas id="ring-junio" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-junio-lbl"></div></div>
+        <div class="cm-stats" id="stats-junio"></div>
+      </div>
+    </div>
+    <div class="cum-month-card" style="border-color:#d4820a;">
+      <div class="cmh" style="background:#7a4800;">
+        <span class="cmh-title">Acumulado</span>
+        <span class="cmh-sub">4 may → 9 jun 2026</span>
+      </div>
+      <div class="cmb">
+        <div class="cm-ring-wrap"><canvas id="ring-total" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-total-lbl"></div></div>
+        <div class="cm-stats" id="stats-total"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alerta gerencial -->
+  <div class="card hl-r">
+    <div class="ch"><span class="ct">⚠ Alerta gerencial</span><span class="bdg b-r">13 días sin envío</span></div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">
+      De <strong>29 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>16</strong>.
+      El <strong>43.3%</strong> de los días laborables no se confirmaron citas.
+    </p>
+    <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 5). <strong>Lunes y jueves</strong> tienen 40% de incumplimiento cada uno. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas (67% de incumplimiento).</div>
+    <div class="aa" style="margin-top:8px;">💰 <strong>Impacto estimado:</strong> ~1.170 citas (13 días × 90 promedio) no recibieron llamada de confirmación automatizada. Con un contact ratio del 80%, aproximadamente <strong>936 pacientes</strong> no fueron contactados.</div>
+  </div>
+
+  <!-- Calendario semanal -->
+  <p class="lbl">CALENDARIO DE ENVÍOS DÍA A DÍA</p>
+  <div id="cal-grid"></div>
+
+  <!-- Por día de semana -->
+  <p class="lbl" style="margin-top:6px;">CUMPLIMIENTO POR DÍA DE SEMANA</p>
+  <div class="dow-analysis" id="dow-analysis"></div>
+
+  <!-- Gráfico semanal + impacto -->
+  <div class="two">
+    <div class="card">
+      <div class="ch"><span class="ct">Envíos por semana · apilado</span></div>
+      <div style="height:210px;"><canvas id="chart-cum-bar"></canvas></div>
+    </div>
+    <div class="card hl-y">
+      <div class="ch"><span class="ct">Impacto estimado en citas no confirmadas</span></div>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">Promedio de <strong>~90 citas/día</strong> basado en los 16 informes recibidos.</p>
+      <div id="impacto-grid"></div>
+    </div>
+  </div>
+
+  <!-- Tabla detalle días perdidos -->
+  <div class="card">
+    <div class="ch"><span class="ct">Detalle — días sin envío de base</span><span class="csub">Ordenado cronológicamente</span></div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Fecha</th><th>Día</th><th>Semana</th><th>Mes</th><th>Citas no confirmadas (est.)</th></tr></thead>
+        <tbody id="tbl-missing"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <script>
@@ -521,29 +625,37 @@ function applyFilter(){
   document.getElementById('k-wont').textContent=fmt(v.wont);
   document.getElementById('k-wont-p').textContent=pct(v.wont,surveyed);
 
-  // Cancelaciones por actividad — datos REALES por día
+  // Cancelaciones por actividad — Método Largest Remainder (Hare-Niemeyer)
+  // Garantiza: todos los valores ≥ 0, suma exacta = wont, sin negativos
   const actCancels={};
   days.forEach(d=>{
     const dv=DATA[d];
-    if(dv.wont>0){
-      // Distribute proportionally to activities of that day
-      const acts=dv.act;
-      const actTotal=Object.values(acts).reduce((a,b)=>a+b,0);
-      let rem=dv.wont;
-      const keys=Object.keys(acts).sort((a,b)=>acts[b]-acts[a]);
-      keys.forEach((a,i)=>{
-        const c=i<keys.length-1?Math.round(dv.wont*(acts[a]/actTotal)):rem;
-        actCancels[a]=(actCancels[a]||0)+c;
-        rem-=c;
-      });
-    }
+    if(dv.wont<=0) return;
+    const acts=dv.act;
+    const actTotal=Object.values(acts).reduce((a,b)=>a+b,0);
+    if(actTotal===0) return;
+    // 1. Calcular cuotas exactas
+    const quotas={};
+    Object.keys(acts).forEach(a=>{ quotas[a]=dv.wont*(acts[a]/actTotal); });
+    // 2. Tomar parte entera (floor) — siempre ≥ 0
+    const floors={};
+    Object.keys(quotas).forEach(a=>{ floors[a]=Math.floor(quotas[a]); });
+    // 3. Distribuir el sobrante a quienes tienen mayor parte decimal
+    const totalFloor=Object.values(floors).reduce((a,b)=>a+b,0);
+    const extra=dv.wont-totalFloor; // extra siempre >= 0
+    const sortedByRem=Object.keys(quotas).sort((a,b)=>(quotas[b]-floors[b])-(quotas[a]-floors[a]));
+    sortedByRem.slice(0,extra).forEach(a=>{ floors[a]+=1; });
+    // 4. Acumular
+    Object.keys(floors).forEach(a=>{
+      actCancels[a]=(actCancels[a]||0)+floors[a];
+    });
   });
   document.getElementById('cancel-badge').textContent=v.wont+(v.wont===1?' cupo libre':' cupos libres');
   document.getElementById('cancel-desc').textContent=v.wont+(v.wont===1?' paciente canceló su cita':' pacientes cancelaron su cita')+' durante el período seleccionado.';
 
   let cancelHTML='';
   ACT_ORDER.forEach(a=>{
-    const c=actCancels[a]||0;
+    const c=Math.max(0, actCancels[a]||0); // defensa extra: nunca mostrar negativo
     cancelHTML+=`<div class="cp ${c>0?'hi':'zero'}"><div class="cp-n">${c}</div><div class="cp-l">${a}</div></div>`;
   });
   cancelHTML+=`<div class="cp tot"><div class="cp-n">${v.wont}</div><div class="cp-l">Total recuperable</div></div>`;
@@ -787,120 +899,183 @@ function buildCobertura(){
 
 
 // ══ CUMPLIMIENTO ═════════════════════════════════════════════════
+// Datos: lun-sáb, sin festivos Colombia, desde 4 may hasta hoy 9 jun 2026
+// Mayo: 23 días hábiles  |  Junio (hasta hoy): 6 días hábiles  |  Total: 29
+const MONTHS_CUM = {
+  mayo: {
+    label:'Mayo 2026', habil:23, sent:12, missing:11,
+    color:'#0c41ab', colorBg:'#dbeafe',
+    missing_days:['Jue 7','Sáb 9','Lun 11','Jue 14','Sáb 16','Jue 21','Sáb 23','Lun 25','Mar 26','Vie 29','Sáb 30']
+  },
+  junio: {
+    label:'Junio 2026 (al 9 jun)', habil:6, sent:4, missing:2,
+    color:'#1a5c3a', colorBg:'#d1fae5',
+    missing_days:['Lun 1','Sáb 6']
+  },
+  total: {
+    label:'Acumulado', habil:29, sent:16, missing:13,
+    color:'#7a4800', colorBg:'#fef3c7',
+    missing_days:[]
+  }
+};
+
 const WEEKS = [
-  {wk:19,label:'4 May – 9 May',  sent:4,total:6,days:[{d:'Lun 4 May',s:'ok'},{d:'Mar 5 May',s:'ok'},{d:'Mié 6 May',s:'ok'},{d:'Jue 7 May',s:'missing'},{d:'Vie 8 May',s:'ok'},{d:'Sáb 9 May',s:'missing'}]},
-  {wk:20,label:'11 May – 16 May',sent:3,total:6,days:[{d:'Lun 11 May',s:'missing'},{d:'Mar 12 May',s:'ok'},{d:'Mié 13 May',s:'ok'},{d:'Jue 14 May',s:'missing'},{d:'Vie 15 May',s:'ok'},{d:'Sáb 16 May',s:'missing'}]},
-  {wk:21,label:'19 May – 23 May',sent:3,total:5,days:[{d:'Mar 19 May',s:'ok'},{d:'Mié 20 May',s:'ok'},{d:'Jue 21 May',s:'missing'},{d:'Vie 22 May',s:'ok'},{d:'Sáb 23 May',s:'missing'}]},
-  {wk:22,label:'25 May – 30 May',sent:2,total:6,days:[{d:'Lun 25 May',s:'missing'},{d:'Mar 26 May',s:'missing'},{d:'Mié 27 May',s:'ok'},{d:'Jue 28 May',s:'ok'},{d:'Vie 29 May',s:'missing'},{d:'Sáb 30 May',s:'missing'}]},
-  {wk:23,label:'1 Jun – 6 Jun',  sent:4,total:6,days:[{d:'Lun 1 Jun',s:'missing'},{d:'Mar 2 Jun',s:'ok'},{d:'Mié 3 Jun',s:'ok'},{d:'Jue 4 Jun',s:'ok'},{d:'Vie 5 Jun',s:'ok'},{d:'Sáb 6 Jun',s:'missing'}]},
-  {wk:24,label:'9 Jun',          sent:0,total:0,days:[{d:'Mar 9 Jun',s:'today'}]},
+  {label:'Sem 4–9 May',   sent:4,total:6, days:[
+    {d:'Lun 4',s:'ok'},{d:'Mar 5',s:'ok'},{d:'Mié 6',s:'ok'},
+    {d:'Jue 7',s:'missing'},{d:'Vie 8',s:'ok'},{d:'Sáb 9',s:'missing'}]},
+  {label:'Sem 11–16 May', sent:3,total:6, days:[
+    {d:'Lun 11',s:'missing'},{d:'Mar 12',s:'ok'},{d:'Mié 13',s:'ok'},
+    {d:'Jue 14',s:'missing'},{d:'Vie 15',s:'ok'},{d:'Sáb 16',s:'missing'}]},
+  {label:'Sem 19–23 May', sent:3,total:5, days:[
+    {d:'Mar 19',s:'ok'},{d:'Mié 20',s:'ok'},
+    {d:'Jue 21',s:'missing'},{d:'Vie 22',s:'ok'},{d:'Sáb 23',s:'missing'}]},
+  {label:'Sem 25–30 May', sent:2,total:6, days:[
+    {d:'Lun 25',s:'missing'},{d:'Mar 26',s:'missing'},{d:'Mié 27',s:'ok'},
+    {d:'Jue 28',s:'ok'},{d:'Vie 29',s:'missing'},{d:'Sáb 30',s:'missing'}]},
+  {label:'Sem 1–6 Jun',   sent:4,total:6, days:[
+    {d:'Lun 1',s:'missing'},{d:'Mar 2',s:'ok'},{d:'Mié 3',s:'ok'},
+    {d:'Jue 4',s:'ok'},{d:'Vie 5',s:'ok'},{d:'Sáb 6',s:'missing'}]},
+  {label:'Sem 9 Jun',     sent:0,total:0, days:[
+    {d:'Mar 9',s:'today'}]},
 ];
 
 const MISSING_DAYS = [
-  {d:'Jue 7 May',  dow:'Jueves',   wk:'4–9 May'},
-  {d:'Sáb 9 May',  dow:'Sábado',   wk:'4–9 May'},
-  {d:'Lun 11 May', dow:'Lunes',    wk:'11–16 May'},
-  {d:'Jue 14 May', dow:'Jueves',   wk:'11–16 May'},
-  {d:'Sáb 16 May', dow:'Sábado',   wk:'11–16 May'},
-  {d:'Jue 21 May', dow:'Jueves',   wk:'19–23 May'},
-  {d:'Sáb 23 May', dow:'Sábado',   wk:'19–23 May'},
-  {d:'Lun 25 May', dow:'Lunes',    wk:'25–30 May'},
-  {d:'Mar 26 May', dow:'Martes',   wk:'25–30 May'},
-  {d:'Vie 29 May', dow:'Viernes',  wk:'25–30 May'},
-  {d:'Sáb 30 May', dow:'Sábado',   wk:'25–30 May'},
-  {d:'Lun 1 Jun',  dow:'Lunes',    wk:'1–6 Jun'},
-  {d:'Sáb 6 Jun',  dow:'Sábado',   wk:'1–6 Jun'},
+  {d:'Jue 7 May', dow:'Jueves',  mes:'Mayo', wk:'4–9 May'},
+  {d:'Sáb 9 May', dow:'Sábado',  mes:'Mayo', wk:'4–9 May'},
+  {d:'Lun 11 May',dow:'Lunes',   mes:'Mayo', wk:'11–16 May'},
+  {d:'Jue 14 May',dow:'Jueves',  mes:'Mayo', wk:'11–16 May'},
+  {d:'Sáb 16 May',dow:'Sábado',  mes:'Mayo', wk:'11–16 May'},
+  {d:'Jue 21 May',dow:'Jueves',  mes:'Mayo', wk:'19–23 May'},
+  {d:'Sáb 23 May',dow:'Sábado',  mes:'Mayo', wk:'19–23 May'},
+  {d:'Lun 25 May',dow:'Lunes',   mes:'Mayo', wk:'25–30 May'},
+  {d:'Mar 26 May',dow:'Martes',  mes:'Mayo', wk:'25–30 May'},
+  {d:'Vie 29 May',dow:'Viernes', mes:'Mayo', wk:'25–30 May'},
+  {d:'Sáb 30 May',dow:'Sábado',  mes:'Mayo', wk:'25–30 May'},
+  {d:'Lun 1 Jun', dow:'Lunes',   mes:'Junio',wk:'1–6 Jun'},
+  {d:'Sáb 6 Jun', dow:'Sábado',  mes:'Junio',wk:'1–6 Jun'},
 ];
 
-// DOW stats: [Lun,Mar,Mié,Jue,Vie,Sáb] opportunities and sent
+// Lun=0 Mar=1 Mié=2 Jue=3 Vie=4 Sáb=5
 const DOW_STATS = [
-  {n:'Lunes',   total:5, sent:2, missing:3},
-  {n:'Martes',  total:5, sent:4, missing:1},
-  {n:'Miércoles',total:5,sent:5, missing:0},
-  {n:'Jueves',  total:5, sent:2, missing:3},
-  {n:'Viernes', total:5, sent:3, missing:2},
-  {n:'Sábado',  total:5, sent:0, missing:5},
+  {n:'Lunes',      total:5,sent:2},
+  {n:'Martes',     total:5,sent:4},
+  {n:'Miércoles',  total:5,sent:5},
+  {n:'Jueves',     total:5,sent:2},
+  {n:'Viernes',    total:5,sent:3},
+  {n:'Sábado',     total:5,sent:0},
 ];
 
-let cCumBar = null;
+let cCumBar=null, cRingMayo=null, cRingJunio=null, cRingTotal=null;
+let cumBuilt=false;
 
 function buildCumplimiento(){
+  // Month rings — build only once (canvas gets destroyed otherwise)
+  if(!cumBuilt){
+    cumBuilt=true;
+    buildRings();
+  }
+
   // Calendar
   let calHTML='';
   WEEKS.forEach(w=>{
-    const pct=w.total>0?Math.round(w.sent/w.total*100):null;
-    const badgeCls=pct===null?'wb-warn':pct>=80?'wb-ok':pct>=50?'wb-warn':'wb-bad';
-    const badgeTxt=pct===null?'Hoy – pendiente':pct+'% enviado ('+w.sent+'/'+w.total+')';
-    const daysHTML=w.days.map(d=>{
-      const icon=d.s==='ok'?'✅':d.s==='today'?'⏳':'❌';
-      const lbl=d.s==='ok'?'Enviado':d.s==='today'?'Hoy':'Sin envío';
-      return `<div class="day-chip ${d.s}"><span class="chip-icon">${icon}</span>${d.d}<span class="chip-lbl">${lbl}</span></div>`;
+    const p=w.total>0?Math.round(w.sent/w.total*100):null;
+    const bc=p===null?'wb-pend':p>=80?'wb-ok':p>=50?'wb-warn':'wb-bad';
+    const bt=p===null?'⏳ Hoy – pendiente':p+'% enviado ('+w.sent+'/'+w.total+')';
+    const dH=w.days.map(d=>{
+      const ic=d.s==='ok'?'✅':d.s==='today'?'⏳':'❌';
+      const lb=d.s==='ok'?'Enviado':d.s==='today'?'Pendiente':'Sin envío';
+      return `<div class="day-chip ${d.s}"><span class="chip-icon">${ic}</span>${d.d}<span class="chip-lbl">${lb}</span></div>`;
     }).join('');
     calHTML+=`<div class="week-row">
-      <div class="week-hdr"><span class="week-hdr-lbl">Semana ${w.wk} · ${w.label}</span><span class="week-badge ${badgeCls}">${badgeTxt}</span></div>
-      <div class="days-row">${daysHTML}</div>
+      <div class="week-hdr"><span class="week-hdr-lbl">${w.label}</span><span class="week-badge ${bc}">${bt}</span></div>
+      <div class="days-row">${dH}</div>
     </div>`;
   });
   document.getElementById('cal-grid').innerHTML=calHTML;
 
-  // DOW analysis
-  const dowHTML=DOW_STATS.map(d=>{
-    const pct=Math.round(d.sent/d.total*100);
-    const cls=pct>=80?'dow-box-ok':pct>=40?'':'dow-box-bad';
-    const rateCls=pct>=80?'b-g':pct>=40?'b-y':'b-r';
+  // DOW boxes
+  document.getElementById('dow-analysis').innerHTML=DOW_STATS.map(d=>{
+    const p=Math.round(d.sent/d.total*100);
+    const miss=d.total-d.sent;
+    const col=p>=80?'#1a9e60':p>=50?'#d4820a':'#c0392b';
+    const rc=p>=80?'b-g':p>=50?'b-y':'b-r';
     return `<div class="dow-box">
-      <div class="dow-box-n ${pct>=60?'dow-box-ok':'dow-box-bad'}">${d.sent}/${d.total}</div>
-      <div class="dow-box-l">${d.n}</div>
-      <div class="dow-box-rate"><span class="bdg ${rateCls}">${pct}%</span></div>
-      <div class="streak-bar"><div class="streak-fill" style="width:${pct}%;background:${pct>=80?'#1a9e60':pct>=50?'#d4820a':'#c0392b'}"></div></div>
+      <div class="dow-n" style="color:${col}">${d.sent}<span style="font-size:13px;color:var(--text2)">/${d.total}</span></div>
+      <div class="dow-l">${d.n}</div>
+      <div class="dow-rate"><span class="bdg ${rc}">${p}% enviado</span></div>
+      <div class="streak-bar"><div class="streak-fill" style="width:${p}%;background:${col}"></div></div>
+      ${miss>0?`<div style="font-size:10px;color:#c0392b;margin-top:4px;font-weight:600;">${miss} día${miss>1?'s':''} perdido${miss>1?'s':''}</div>`:'<div style="font-size:10px;color:#1a9e60;margin-top:4px;font-weight:600;">✅ Perfecto</div>'}
     </div>`;
   }).join('');
-  document.getElementById('dow-analysis').innerHTML=dowHTML;
 
-  // Weekly bar chart
+  // Stacked bar chart
   const gc='rgba(0,0,0,0.04)',tc='#666';
   if(cCumBar)cCumBar.destroy();
-  const wLabels=WEEKS.filter(w=>w.total>0).map(w=>w.label);
-  const wSent=WEEKS.filter(w=>w.total>0).map(w=>w.sent);
-  const wMissing=WEEKS.filter(w=>w.total>0).map(w=>w.total-w.sent);
+  const wFilter=WEEKS.filter(w=>w.total>0);
   cCumBar=new Chart(document.getElementById('chart-cum-bar'),{
     type:'bar',
-    data:{labels:wLabels,datasets:[
-      {label:'Enviado',data:wSent,backgroundColor:'#1a9e60',borderRadius:4,stack:'s'},
-      {label:'Sin envío',data:wMissing,backgroundColor:'#c0392b',borderRadius:4,stack:'s'},
+    data:{labels:wFilter.map(w=>w.label),datasets:[
+      {label:'✅ Enviado',  data:wFilter.map(w=>w.sent),       backgroundColor:'#1a9e60',borderRadius:4,stack:'s'},
+      {label:'❌ Sin envío',data:wFilter.map(w=>w.total-w.sent),backgroundColor:'#c0392b',borderRadius:4,stack:'s'},
     ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:10}},
+    options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:8}},
       plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},datalabels:{display:false}},
       scales:{x:{ticks:{color:tc,font:{size:10}},grid:{color:gc}},
-              y:{beginAtZero:true,max:7,ticks:{color:tc,stepSize:1},grid:{color:gc},
-                 title:{display:true,text:'Días de la semana',color:tc,font:{size:10}}}}}
+        y:{beginAtZero:true,max:7,ticks:{color:tc,stepSize:1},grid:{color:gc}}}}
   });
 
-  // Impacto grid
+  // Impacto
   const avg=90;
   document.getElementById('impacto-grid').innerHTML=[
-    {l:'Días sin base',n:13,col:'#c0392b'},
-    {l:'Citas est. no confirmadas',n:'~'+(13*avg).toLocaleString('es-CO'),col:'#d4820a'},
-    {l:'Pacientes no contactados (80%)',n:'~'+(Math.round(13*avg*0.8)).toLocaleString('es-CO'),col:'#6a3db8'},
-  ].map(x=>`<div class="br"><div class="bl">${x.l}</div><div style="flex:1;font-size:18px;font-weight:900;color:${x.col};text-align:right">${x.n}</div></div>`).join('');
+    {l:'Días hábiles sin base', n:13, col:'#c0392b'},
+    {l:'Citas est. sin confirmar',n:'~1.170',col:'#d4820a'},
+    {l:'Pacientes no contactados',n:'~936',  col:'#6a3db8'},
+  ].map(x=>`<div class="br" style="padding:6px 0;border-bottom:1px solid var(--border);">
+    <div class="bl" style="width:180px;">${x.l}</div>
+    <div style="flex:1;font-size:20px;font-weight:900;color:${x.col};text-align:right;">${x.n}</div>
+  </div>`).join('');
 
-  // Missing table
-  const cols={
-    'Jueves':0,'Sábado':0,'Lunes':0,'Martes':0,'Viernes':0
-  };
-  document.getElementById('tbl-missing').innerHTML=MISSING_DAYS.map((m,i)=>{
-    const isSab=m.dow==='Sábado';
-    const isLun=m.dow==='Lunes';
-    return `<tr>
-      <td>${i+1}</td>
-      <td><strong>${m.d}</strong></td>
-      <td><span class="bdg ${isSab?'b-r':isLun?'b-y':'b-gr'}">${m.dow}</span></td>
-      <td>${m.wk}</td>
-      <td>❌ Sin envío</td>
-      <td style="color:#c0392b;font-weight:700;">~${avg} citas</td>
-    </tr>`;
-  }).join('');
+  // Table
+  const DOW_COLOR={'Sábado':'b-r','Lunes':'b-y','Jueves':'b-y','Martes':'b-gr','Viernes':'b-gr'};
+  const MES_COLOR={'Mayo':'b-b','Junio':'b-g'};
+  document.getElementById('tbl-missing').innerHTML=MISSING_DAYS.map((m,i)=>`<tr>
+    <td>${i+1}</td>
+    <td><strong>${m.d}</strong></td>
+    <td><span class="bdg ${DOW_COLOR[m.dow]||'b-gr'}">${m.dow}</span></td>
+    <td>${m.wk}</td>
+    <td><span class="bdg ${MES_COLOR[m.mes]}">${m.mes}</span></td>
+    <td style="color:#c0392b;font-weight:700;">~${avg} citas</td>
+  </tr>`).join('');
+}
+
+function buildRings(){
+  const months=[
+    {id:'mayo', data:MONTHS_CUM.mayo, ringId:'ring-mayo', lblId:'ring-mayo-lbl', statsId:'stats-mayo'},
+    {id:'junio',data:MONTHS_CUM.junio,ringId:'ring-junio',lblId:'ring-junio-lbl',statsId:'stats-junio'},
+    {id:'total',data:MONTHS_CUM.total,ringId:'ring-total',lblId:'ring-total-lbl',statsId:'stats-total'},
+  ];
+  months.forEach(m=>{
+    const d=m.data;
+    const pctEnv=Math.round(d.sent/d.habil*100);
+    const pctMiss=100-pctEnv;
+    const col=pctEnv>=80?'#1a9e60':pctEnv>=60?'#d4820a':'#c0392b';
+    new Chart(document.getElementById(m.ringId),{
+      type:'doughnut',
+      data:{labels:['Enviado','Sin envío'],
+        datasets:[{data:[d.sent,d.missing],
+          backgroundColor:[col,'#fee2e2'],borderWidth:2,borderColor:'#fff'}]},
+      options:{cutout:'68%',responsive:false,
+        plugins:{legend:{display:false},tooltip:{display:false},datalabels:{display:false}}}
+    });
+    document.getElementById(m.lblId).innerHTML=
+      `<span style="font-size:18px;color:${col}">${pctEnv}%</span><br><span style="font-size:9px;color:#666">enviado</span>`;
+    document.getElementById(m.statsId).innerHTML=[
+      {l:'Días hábiles',v:d.habil},
+      {l:'Con base ✅',  v:d.sent,   vc:'#1a9e60'},
+      {l:'Sin base ❌',  v:d.missing, vc:'#c0392b'},
+      {l:'Incumplim.',  v:pctMiss+'%',vc:pctMiss>=40?'#c0392b':'#d4820a'},
+    ].map(s=>`<div class="cm-stat"><span class="cm-stat-l">${s.l}</span><span class="cm-stat-v" style="${s.vc?'color:'+s.vc:''}">${s.v}</span></div>`).join('');
+  });
 }
 
 // ══ INIT ═════════════════════════════════════════════════════════
