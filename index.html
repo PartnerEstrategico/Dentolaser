@@ -355,17 +355,17 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <div class="cob-sub" style="font-size:12px;margin-top:4px;">100% · todos los pacientes</div>
       <div style="font-size:11px;color:#065f46;margin-top:8px;font-weight:600;">✅ Base de contacto garantizada</div>
     </div>
-    <div class="cob-box p2" style="text-align:center;padding:20px 24px;">
-      <div class="cob-n" id="cob-p2">—</div>
-      <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Con número alterno</div>
-      <div class="cob-sub" id="cob-p2-pct" style="font-size:12px;margin-top:4px;">—</div>
-      <div style="font-size:11px;color:#065f46;margin-top:8px;font-weight:600;" id="cob-p3-note">—</div>
-    </div>
     <div class="cob-box p1" style="text-align:center;padding:20px 24px;border-color:#fca5a5;">
       <div class="cob-n" id="cob-p1">—</div>
       <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Sin número alterno</div>
       <div class="cob-sub" id="cob-p1-pct" style="font-size:12px;margin-top:4px;">—</div>
       <div style="font-size:11px;color:#991b1b;margin-top:8px;font-weight:600;">⚠ Sin segunda oportunidad de contacto</div>
+    </div>
+    <div class="cob-box p2" style="text-align:center;padding:20px 24px;">
+      <div class="cob-n" id="cob-p3">—</div>
+      <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Con 3er teléfono</div>
+      <div class="cob-sub" id="cob-p3-pct" style="font-size:12px;margin-top:4px;">—</div>
+      <div style="font-size:11px;color:#065f46;margin-top:8px;font-weight:600;" id="cob-p3-note">—</div>
     </div>
   </div>
   <div id="cob-alert-main"></div>
@@ -831,20 +831,20 @@ function buildCobertura(){
   const conAlt=v.p2;
   const crActual=pct(v.answered,v.total);
 
-  // KPI: con teléfono principal (siempre = total)
+  // KPI 1: con teléfono principal (siempre = total)
   document.getElementById('cob-p0').textContent=fmt(v.total);
 
-  // KPI: con alterno
-  document.getElementById('cob-p2').textContent=fmt(conAlt);
-  document.getElementById('cob-p2-pct').textContent=pct(conAlt,v.total)+' del total · reintento disponible';
-  document.getElementById('cob-p3-note').textContent=
-    v.p3>0
-      ? `✅ De estos, ${v.p3} tienen incluso un 3er teléfono (${pct(v.p3,v.total)})`
-      : '(ninguno con 3er teléfono en este período)';
-
-  // KPI: sin alterno
+  // KPI 2: sin número alterno (el más crítico)
   document.getElementById('cob-p1').textContent=fmt(sinAlt);
   document.getElementById('cob-p1-pct').textContent=pct(sinAlt,v.total)+' del total · sin reintento posible';
+
+  // KPI 3: con 3er teléfono
+  document.getElementById('cob-p3').textContent=fmt(v.p3);
+  document.getElementById('cob-p3-pct').textContent=pct(v.p3,v.total)+' del total tienen un 3er teléfono';
+  document.getElementById('cob-p3-note').textContent=
+    v.p3>0
+      ? `${pct(v.p3,v.total)} del total tienen un tercer teléfono para un reintento posible.`
+      : 'Ningún paciente tiene un 3er teléfono registrado en este período.';
 
   // Alerta principal — texto dinámico exacto
   document.getElementById('cob-alert-main').innerHTML=`<div class="ar" style="margin-top:0;">
