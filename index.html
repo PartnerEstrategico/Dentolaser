@@ -3,172 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard – DENTOLASER Galerías</title>
+<title>Dashboard – Reformar IPS Fundación</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --primary:#0c41ab;--primary2:#0a2089;--teal:#2e63cd;
-  --green:#1a9e60;--red:#c0392b;--amber:#d4820a;--purple:#6a3db8;
-  --bg:#f2f4f9;--surface:#ffffff;--surface2:#eef1f8;
-  --text:#1a1a2e;--text2:#5a6270;--border:#d4d9e8;
+  --primary:#007bff;--dark:#343a40;--body:#6c757d;
+  --amber:#ffc107;--red:#dc3545;--green:#28a745;--teal:#20c997;
+  --cyan:#17a2b8;--indigo:#6610f2;--orange:#fd7e14;--purple:#6f42c1;
+  --bg:#f0f4f8;--surface:#ffffff;--surface2:#f8f9fa;
+  --text:#343a40;--text2:#6c757d;--border:#dee2e6;
   --radius:8px;--radius-lg:12px;
 }
 html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
 .wrap{width:100%;min-height:100vh;display:flex;flex-direction:column;}
-
-/* HEADER */
-.hdr{background:linear-gradient(135deg,#071560 0%,var(--primary2) 50%,var(--primary) 100%);color:#fff;padding:13px 28px;border-bottom:3px solid #1d3eb8;display:flex;align-items:center;justify-content:space-between;}
-.hdr-logo{width:40px;height:40px;background:rgba(255,255,255,0.13);border:2px solid rgba(255,255,255,0.3);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-right:13px;font-weight:900;font-size:12px;color:#fff;flex-shrink:0;letter-spacing:-0.5px;}
+.hdr{background:var(--dark);color:#fff;padding:12px 28px;border-bottom:3px solid var(--primary);display:flex;align-items:center;justify-content:space-between;}
+.hdr-logo{width:34px;height:34px;background:var(--primary);border-radius:7px;display:flex;align-items:center;justify-content:center;margin-right:12px;font-weight:800;font-size:14px;color:#fff;flex-shrink:0;}
 .hdr-left{display:flex;align-items:center;}
-.hdr-name{font-size:16px;font-weight:800;color:#fff;letter-spacing:.4px;}
-.hdr-sub{font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;}
-.hdr-right{font-size:11px;color:rgba(255,255,255,0.6);text-align:right;border-left:1px solid rgba(255,255,255,0.18);padding-left:16px;}
-.hdr-right strong{color:#fff;display:block;font-size:13px;font-weight:700;}
-
-/* TABS */
-.tabs{background:#091878;display:flex;padding:0 28px;border-bottom:1px solid rgba(255,255,255,0.07);}
-.tab{padding:11px 18px;font-size:13px;color:rgba(255,255,255,0.42);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s;}
-.tab.active{color:#fff;font-weight:700;border-bottom-color:#4d7aef;}
-.tab:hover:not(.active){color:rgba(255,255,255,0.78);}
-
-/* FILTERBAR */
-.filterbar{background:var(--surface);border-bottom:1px solid var(--border);padding:9px 28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.filterbar label{font-size:12px;color:var(--text2);font-weight:600;}
+.hdr-name{font-size:15px;font-weight:700;color:#fff;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,0.5);margin-top:1px;}
+.hdr-right{font-size:11px;color:rgba(255,255,255,0.5);text-align:right;border-left:1px solid rgba(255,255,255,0.15);padding-left:16px;}
+.hdr-right strong{color:#fff;display:block;font-size:13px;}
+.tabs{background:#23272b;display:flex;padding:0 28px;border-bottom:1px solid rgba(255,255,255,0.07);overflow-x:auto;}
+.tab{padding:10px 17px;font-size:13px;color:rgba(255,255,255,0.45);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s;}
+.tab.active{color:#fff;font-weight:600;border-bottom-color:var(--primary);}
+.tab:hover:not(.active){color:rgba(255,255,255,0.8);}
+.filterbar{background:var(--surface);border-bottom:1px solid var(--border);padding:9px 28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.filterbar label{font-size:12px;color:var(--text2);}
 .fsel{font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:5px 28px 5px 10px;color:var(--text);cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
 .fsel:focus{outline:none;border-color:var(--primary);}
-.pill-b{background:var(--primary);color:#fff;border-radius:20px;padding:3px 13px;font-size:12px;font-weight:700;}
-.fdate-wrap{display:flex;align-items:center;gap:7px;}
-#fecha-wrap,#rango-wrap{display:none;}
-
-/* PAGES */
+.pill-b{background:var(--primary);color:#fff;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;}
+.fdate-wrap{display:flex;align-items:center;gap:8px;}
+#fecha-wrap{display:none;}
+#rango-wrap{display:none;}
 .page{display:none;padding:20px 28px;background:var(--bg);flex:1;}
 .page.active{display:block;}
-.lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--text2);margin-bottom:10px;}
-
-/* KPI ROW */
+.lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text2);margin-bottom:10px;}
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
-@media(max-width:860px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
-.kpi{background:var(--surface);border-radius:var(--radius);padding:14px 16px;border:1px solid var(--border);border-top:4px solid var(--border);}
-.kpi.b{border-top-color:var(--primary);}.kpi.g{border-top-color:var(--green);}
-.kpi.r{border-top-color:var(--red);}.kpi.y{border-top-color:var(--amber);}
-.kpi-l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:4px;font-weight:600;}
-.kpi-n{font-size:30px;font-weight:900;line-height:1.1;}
-.kpi.b .kpi-n{color:var(--primary);}.kpi.g .kpi-n{color:var(--green);}
-.kpi.r .kpi-n{color:var(--red);}.kpi.y .kpi-n{color:var(--amber);}
-.kpi-s{font-size:11px;color:var(--text2);margin-top:5px;}
+@media(max-width:850px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:var(--surface);border-radius:var(--radius);padding:13px 15px;border:1px solid var(--border);border-top:3px solid var(--border);}
+.kpi.b{border-top-color:var(--primary);}.kpi.g{border-top-color:var(--green);}.kpi.r{border-top-color:var(--red);}.kpi.y{border-top-color:var(--amber);}
+.kpi-l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:3px;}
+.kpi-n{font-size:28px;font-weight:800;line-height:1.1;color:var(--text);}
+.kpi.b .kpi-n{color:var(--primary);}.kpi.g .kpi-n{color:var(--green);}.kpi.r .kpi-n{color:var(--red);}.kpi.y .kpi-n{color:#856404;}
+.kpi-s{font-size:11px;color:var(--text2);margin-top:4px;}
 .kpi-p{font-weight:700;}
-.kpi.b .kpi-p{color:var(--primary);}.kpi.g .kpi-p{color:var(--green);}
-.kpi.r .kpi-p{color:var(--red);}.kpi.y .kpi-p{color:var(--amber);}
-
-/* CARDS */
+.kpi.b .kpi-p{color:var(--primary);}.kpi.g .kpi-p{color:var(--green);}.kpi.r .kpi-p{color:var(--red);}.kpi.y .kpi-p{color:#856404;}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:14px;}
 .card.hl{border-left:4px solid var(--primary);}
-.card.hl-g{border-left:4px solid var(--green);}
-.card.hl-r{border-left:4px solid var(--red);}
 .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
 .ct{font-size:13px;font-weight:700;color:var(--text);}
 .csub{font-size:11px;color:var(--text2);}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
-@media(max-width:700px){.two,.three{grid-template-columns:1fr;}}
-
-/* BARS */
-.br{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.bl{font-size:12px;color:var(--text2);width:140px;flex-shrink:0;line-height:1.3;}
-.bt{flex:1;height:9px;background:var(--bg);border-radius:4px;overflow:hidden;}
-.bf{height:100%;border-radius:4px;transition:width .4s;}
-.bv{font-size:11px;color:var(--text);width:90px;text-align:right;flex-shrink:0;}
-
-/* HBAR */
+@media(max-width:680px){.two{grid-template-columns:1fr;}}
+.br{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+.bl{font-size:12px;color:var(--text2);width:160px;flex-shrink:0;line-height:1.3;}
+.bt{flex:1;height:8px;background:var(--bg);border-radius:4px;overflow:hidden;}
+.bf{height:100%;border-radius:4px;}
+.bv{font-size:11px;color:var(--text);width:80px;text-align:right;flex-shrink:0;}
 .hbar{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
-.hbar-lbl{font-size:12px;color:var(--text);width:125px;flex-shrink:0;}
-.hbar-track{flex:1;height:9px;background:var(--bg);border-radius:4px;overflow:hidden;}
-.hbar-fill{height:100%;border-radius:4px;transition:width .4s;}
-.hbar-val{font-size:11px;color:var(--text2);width:85px;text-align:right;flex-shrink:0;}
-
-/* DURATION */
+.hbar-lbl{font-size:12px;color:var(--text);width:110px;flex-shrink:0;}
+.hbar-track{flex:1;height:8px;background:var(--bg);border-radius:4px;overflow:hidden;}
+.hbar-fill{height:100%;border-radius:4px;}
+.hbar-val{font-size:11px;color:var(--text2);width:70px;text-align:right;flex-shrink:0;}
+.cupos-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;}
+@media(max-width:680px){.cupos-g{grid-template-columns:repeat(2,1fr);}}
+.cp{background:#e8f4fd;border:1px solid #bee5fb;border-radius:var(--radius);padding:10px;text-align:center;}
+.cp-l{font-size:10px;color:#004085;line-height:1.4;margin-bottom:3px;}
+.cp-n{font-size:22px;font-weight:800;color:var(--primary);}
+.cp-s{font-size:10px;color:#004085;}
+.cp-tot{background:#d4edda;border:1px solid #c3e6cb;border-radius:var(--radius);padding:10px;text-align:center;}
+.cp-tot-n{font-size:22px;font-weight:800;color:var(--green);}
+.cp-tot-l{font-size:10px;color:#155724;margin-top:2px;}
 .dg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;}
-.dv{font-size:22px;font-weight:900;}
-.dbw{height:48px;display:flex;align-items:flex-end;justify-content:center;margin:4px 0;}
-.db{width:36px;border-radius:3px 3px 0 0;}
+.dv{font-size:20px;font-weight:800;color:var(--text);}
+.dbw{height:44px;display:flex;align-items:flex-end;justify-content:center;margin:4px 0;}
+.db{width:38px;border-radius:3px 3px 0 0;}
 .dl{font-size:10px;color:var(--text2);}
-.dp{font-size:11px;font-weight:700;}
-
-/* CANCELACIONES GRID */
-.cancel-g{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px;}
-@media(max-width:700px){.cancel-g{grid-template-columns:repeat(3,1fr);}}
-.cp{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px;text-align:center;}
-.cp.hi{background:#fef2f2;border-color:#fca5a5;}
-.cp.tot{background:#eef8f4;border-color:#6ee7b7;}
-.cp-n{font-size:24px;font-weight:900;color:var(--primary);}
-.cp.hi .cp-n{color:var(--red);}
-.cp.tot .cp-n{color:var(--green);}
-.cp-l{font-size:10px;color:var(--text2);line-height:1.4;margin-top:2px;}
-
-/* TABLES */
+.dp{font-size:11px;color:var(--text2);}
 .tbl-wrap{overflow-x:auto;}
 .tbl{width:100%;font-size:12px;border-collapse:collapse;}
-.tbl th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#fff;background:var(--primary);padding:9px 11px;text-align:left;}
+.tbl th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:#fff;background:var(--dark);padding:9px 11px;text-align:left;}
 .tbl td{padding:8px 11px;border-bottom:1px solid var(--border);color:var(--text);}
 .tbl tr:hover td{background:var(--surface2);}
 .tbl tr.tot td{font-weight:700;background:var(--surface2);}
-
-/* BADGES */
-.bdg{font-size:10px;padding:2px 9px;border-radius:10px;font-weight:700;}
-.b-g{background:#d1fae5;color:#065f46;}.b-r{background:#fee2e2;color:#991b1b;}
-.b-y{background:#fef3c7;color:#92400e;}.b-b{background:#dbeafe;color:#1e3a8a;}
-.b-c{background:#cffafe;color:#164e63;}.b-p{background:#ede9fe;color:#4c1d95;}
-
-/* ALERTS */
-.at{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#064e3b;margin-top:8px;line-height:1.6;}
-.aa{background:#fffbeb;border:1px solid #fcd34d;border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#78350f;margin-top:8px;line-height:1.6;}
-.ar{background:#fef2f2;border:1px solid #fca5a5;border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#7f1d1d;margin-top:8px;line-height:1.6;}
-.ai{background:#eff6ff;border:1px solid #93c5fd;border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#1e3a8a;margin-top:8px;line-height:1.6;}
-
-/* LEGEND */
-.leg{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text);margin-bottom:8px;}
-.leg-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
-
-/* STAT BOXES */
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;}
-.stat-box{padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);}
-.stat-n{font-size:24px;font-weight:900;}
-.stat-l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:3px;}
+.bdg{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.b-g{background:#d4edda;color:#155724;}.b-r{background:#f8d7da;color:#721c24;}
+.b-y{background:#fff3cd;color:#856404;}.b-b{background:#cce5ff;color:#004085;}
+.b-c{background:#d1ecf1;color:#0c5460;}.b-p{background:#e2d9f3;color:#432874;}
+.aa{background:#fff3cd;border:1px solid var(--amber);border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#856404;margin-top:8px;line-height:1.5;}
+.at{background:#d4edda;border:1px solid var(--green);border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#155724;margin-top:8px;line-height:1.5;}
+.ai{background:#d1ecf1;border:1px solid var(--cyan);border-radius:var(--radius);padding:9px 13px;font-size:12px;color:#0c5460;margin-top:8px;line-height:1.5;}
+.stat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+.stat{text-align:center;padding:9px;background:var(--bg);border-radius:var(--radius);}
+.stat-n{font-size:20px;font-weight:800;color:var(--text);}
+.stat-l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- HEADER -->
 <div class="hdr">
   <div class="hdr-left">
-    <div class="hdr-logo">DL</div>
+    <div class="hdr-logo">RI</div>
     <div>
-      <div class="hdr-name">DENTOLASER · Sede Galerías</div>
-      <div class="hdr-sub">Gestión de confirmación de citas · Campaña outbound</div>
+      <div class="hdr-name">Reformar IPS Fundación</div>
+      <div class="hdr-sub">Gestión de confirmación de citas médicas · Campaña outbound</div>
     </div>
   </div>
   <div class="hdr-right">
-    <strong id="hdr-meta">Cargando…</strong>
-    Sede Galerías · Múltiples doctores
+    <strong id="hdr-meta">Cargando...</strong>
+    Dos sedes · Múltiples profesionales
   </div>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
   <div class="tab active" onclick="st('resumen')">Resumen ejecutivo</div>
   <div class="tab" onclick="st('tendencia')">Tendencia diaria</div>
-  <div class="tab" onclick="st('doctores')">Por doctor</div>
+  <div class="tab" onclick="st('sedes')">Por sede</div>
 </div>
 
-<!-- FILTERBAR -->
 <div class="filterbar">
   <label>Período:</label>
   <select class="fsel" id="periodo-sel" onchange="onPeriodo()">
-    <option value="mayo">Mayo 2026 (12 días)</option>
-    <option value="junio">Junio 2026 (4 días)</option>
+    <option value="may">Mayo 2026 (8 días)</option>
+    <option value="jun">Junio 2026 (5 días)</option>
     <option value="todos">Todos los períodos</option>
     <option value="fecha" selected>Fecha específica</option>
     <option value="rango">Rango personalizado</option>
@@ -176,47 +137,53 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <div id="fecha-wrap" class="fdate-wrap">
     <label>Fecha:</label>
     <select class="fsel" id="fecha-sel" onchange="applyFilter()">
-      <option value="504">4 may 2026</option>
-      <option value="505">5 may 2026</option>
-      <option value="506">6 may 2026</option>
-      <option value="508">8 may 2026</option>
-      <option value="512">12 may 2026</option>
-      <option value="513">13 may 2026</option>
-      <option value="515">15 may 2026</option>
-      <option value="519">19 may 2026</option>
-      <option value="520">20 may 2026</option>
+      <option value="521">21 may 2026</option>
       <option value="522">22 may 2026</option>
+      <option value="523">23 may 2026</option>
+      <option value="525">25 may 2026</option>
+      <option value="526">26 may 2026</option>
       <option value="527">27 may 2026</option>
-      <option value="528">28 may 2026</option>
+      <option value="529">29 may 2026</option>
+      <option value="530">30 may 2026</option>
       <option value="602">2 jun 2026</option>
       <option value="603">3 jun 2026</option>
-      <option value="604">4 jun 2026</option>
-      <option value="605" selected>5 jun 2026</option>
+      <option value="605">5 jun 2026</option>
+      <option value="606">6 jun 2026</option>
+      <option value="609" selected>9 jun 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
     <label>Desde:</label>
     <select class="fsel" id="rango-desde" onchange="applyFilter()">
-      <option value="504" selected>4 may 2026</option>
-      <option value="505">5 may 2026</option><option value="506">6 may 2026</option>
-      <option value="508">8 may 2026</option><option value="512">12 may 2026</option>
-      <option value="513">13 may 2026</option><option value="515">15 may 2026</option>
-      <option value="519">19 may 2026</option><option value="520">20 may 2026</option>
-      <option value="522">22 may 2026</option><option value="527">27 may 2026</option>
-      <option value="528">28 may 2026</option><option value="602">2 jun 2026</option>
-      <option value="603">3 jun 2026</option><option value="604">4 jun 2026</option>
+      <option value="521" selected>21 may 2026</option>
+      <option value="522">22 may 2026</option>
+      <option value="523">23 may 2026</option>
+      <option value="525">25 may 2026</option>
+      <option value="526">26 may 2026</option>
+      <option value="527">27 may 2026</option>
+      <option value="529">29 may 2026</option>
+      <option value="530">30 may 2026</option>
+      <option value="602">2 jun 2026</option>
+      <option value="603">3 jun 2026</option>
       <option value="605">5 jun 2026</option>
+      <option value="606">6 jun 2026</option>
+      <option value="609">9 jun 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
-      <option value="504">4 may 2026</option><option value="505">5 may 2026</option>
-      <option value="506">6 may 2026</option><option value="508">8 may 2026</option>
-      <option value="512">12 may 2026</option><option value="513">13 may 2026</option>
-      <option value="515">15 may 2026</option><option value="519">19 may 2026</option>
-      <option value="520">20 may 2026</option><option value="522">22 may 2026</option>
-      <option value="527">27 may 2026</option><option value="528">28 may 2026</option>
-      <option value="602">2 jun 2026</option><option value="603">3 jun 2026</option>
-      <option value="604">4 jun 2026</option><option value="605" selected>5 jun 2026</option>
+      <option value="521">21 may 2026</option>
+      <option value="522">22 may 2026</option>
+      <option value="523">23 may 2026</option>
+      <option value="525">25 may 2026</option>
+      <option value="526">26 may 2026</option>
+      <option value="527">27 may 2026</option>
+      <option value="529">29 may 2026</option>
+      <option value="530">30 may 2026</option>
+      <option value="602">2 jun 2026</option>
+      <option value="603">3 jun 2026</option>
+      <option value="605">5 jun 2026</option>
+      <option value="606">6 jun 2026</option>
+      <option value="609" selected>9 jun 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -225,197 +192,177 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <!-- ══ RESUMEN ══ -->
 <div class="page active" id="p-resumen">
   <p class="lbl" id="lbl-periodo">INDICADORES</p>
-
   <div class="kpi-row">
     <div class="kpi b"><div class="kpi-l">Total citas</div><div class="kpi-n" id="k-total">—</div><div class="kpi-s" id="k-total-s">—</div></div>
-    <div class="kpi g"><div class="kpi-l">Contactadas</div><div class="kpi-n" id="k-contact">—</div><div class="kpi-s"><span class="kpi-p" id="k-cr">—</span> contact ratio</div></div>
-    <div class="kpi g"><div class="kpi-l">Confirman asistencia</div><div class="kpi-n" id="k-will">—</div><div class="kpi-s"><span class="kpi-p" id="k-will-p">—</span> de encuestados</div></div>
-    <div class="kpi r"><div class="kpi-l">Cancelaciones</div><div class="kpi-n" id="k-wont">—</div><div class="kpi-s"><span class="kpi-p" id="k-wont-p">—</span> cupos liberados</div></div>
+    <div class="kpi g"><div class="kpi-l">Contactadas</div><div class="kpi-n" id="k-contact">—</div><div class="kpi-s"><span class="kpi-p" id="k-contact-p">—</span> contact ratio</div></div>
+    <div class="kpi g"><div class="kpi-l">Confirman asistencia</div><div class="kpi-n" id="k-asiste">—</div><div class="kpi-s"><span class="kpi-p" id="k-asiste-p">—</span> de encuestados</div></div>
+    <div class="kpi r"><div class="kpi-l">Cancelaciones</div><div class="kpi-n" id="k-cancel">—</div><div class="kpi-s"><span class="kpi-p" id="k-cancel-p">—</span> cupos liberados</div></div>
   </div>
 
-  <!-- CANCELACIONES -->
-  <div class="card hl-r" id="cancel-card">
-    <div class="ch">
-      <span class="ct">Cupos liberados por actividad</span>
-      <span class="bdg b-r" id="cancel-badge">—</span>
-    </div>
-    <p style="font-size:12px;color:var(--text2);margin-bottom:12px;" id="cancel-desc"></p>
-    <div class="cancel-g" id="cancel-grid"></div>
-    <div id="cancel-alert"></div>
+  <div class="card hl">
+    <div class="ch"><span class="ct">Cupos liberados por servicio</span><span class="bdg b-r" id="cupos-badge">—</span></div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:12px" id="cupos-desc"></p>
+    <div class="cupos-g" id="cupos-grid"></div>
+    <div id="cupos-alert"></div>
   </div>
 
   <div class="two">
-    <!-- DONUT ENCUESTA -->
     <div class="card">
       <div class="ch"><span class="ct">Resultado encuesta</span></div>
       <div style="display:flex;align-items:center;gap:20px;">
-        <div style="width:150px;height:150px;flex-shrink:0;"><canvas id="dc-encuesta"></canvas></div>
-        <div style="flex:1;" id="dc-legend"></div>
+        <div style="width:160px;height:160px;flex-shrink:0;"><canvas id="dc"></canvas></div>
+        <div id="dc-legend" style="flex:1;"></div>
       </div>
     </div>
-
-    <!-- LLAMADA + DURACION -->
     <div class="card">
       <div class="ch"><span class="ct">Resultado de la llamada</span></div>
       <div id="hbar-llamada"></div>
       <div style="margin-top:16px;">
-        <p class="lbl">Duración de llamadas contestadas</p>
+        <p class="lbl">Duración de llamadas contestadas (seg)</p>
         <div class="dg" id="dur-grid"></div>
-        <div id="dur-alert"></div>
+        <div id="dur-alert" style="margin-top:8px;"></div>
       </div>
     </div>
   </div>
-
-  <!-- ACTIVIDADES -->
   <div class="card">
-    <div class="ch"><span class="ct">Métricas de calidad</span><span class="csub" id="metricas-sub">—</span></div>
-    <div class="stat-row" id="metricas-grid"></div>
+    <div class="ch"><span class="ct">Distribución por tipo de servicio</span><span class="csub" id="svc-total">—</span></div>
+    <div id="svc-bars"></div>
   </div>
 </div>
 
 <!-- ══ TENDENCIA ══ -->
 <div class="page" id="p-tendencia">
-  <p class="lbl">TENDENCIA DIARIA</p>
+  <p class="lbl">Tendencia diaria</p>
   <div class="card">
-    <div class="ch"><span class="ct">Citas totales vs. Contactadas por día</span></div>
-    <div style="height:230px;"><canvas id="chart-tend-bar"></canvas></div>
+    <div class="ch"><span class="ct">Citas totales vs Contactadas por día</span></div>
+    <div style="height:220px;"><canvas id="chart-tend-bar"></canvas></div>
   </div>
   <div class="two">
     <div class="card">
       <div class="ch"><span class="ct">Contact ratio diario (%)</span></div>
-      <div style="height:180px;"><canvas id="chart-cr-line"></canvas></div>
+      <div style="height:180px;"><canvas id="chart-tend-contact"></canvas></div>
     </div>
     <div class="card">
-      <div class="ch"><span class="ct">Cancelaciones por día</span></div>
-      <div style="height:180px;"><canvas id="chart-cancel-bar"></canvas></div>
+      <div class="ch"><span class="ct">Cancelaciones diarias</span></div>
+      <div style="height:180px;"><canvas id="chart-tend-cancel"></canvas></div>
     </div>
   </div>
   <div class="card">
-    <div class="ch"><span class="ct">Resumen por jornada</span></div>
+    <div class="ch"><span class="ct">Resumen por fecha</span></div>
     <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>Fecha</th><th>Total</th><th>Contactadas</th><th>Contact ratio</th><th>Confirman</th><th>Cancela</th><th>Survey ratio</th><th>Dur. >45s</th></tr></thead>
-        <tbody id="tbl-tend"></tbody>
-      </table>
+    <table class="tbl">
+      <thead><tr><th>Fecha</th><th>Total</th><th>Contactadas</th><th>Contact ratio</th><th>Confirman</th><th>Cancela</th><th>Survey ratio</th></tr></thead>
+      <tbody id="tbl-tend"></tbody>
+    </table>
     </div>
   </div>
 </div>
 
-<!-- ══ DOCTORES ══ -->
-<div class="page" id="p-doctores">
-  <p class="lbl">DISTRIBUCIÓN POR DOCTOR</p>
-  <div class="card">
-    <div class="ch"><span class="ct">Citas totales por doctor (acumulado período)</span><span class="csub" id="doc-sub">—</span></div>
-    <div style="height:230px;"><canvas id="chart-doc-bar"></canvas></div>
-  </div>
+<!-- ══ SEDES ══ -->
+<div class="page" id="p-sedes">
+  <p class="lbl">Por sede</p>
   <div class="two">
     <div class="card">
-      <div class="ch"><span class="ct">Distribución porcentual</span></div>
-      <div style="display:flex;align-items:center;gap:16px;">
-        <div style="width:140px;height:140px;flex-shrink:0;"><canvas id="dc-doc"></canvas></div>
-        <div id="doc-legend" style="flex:1;"></div>
-      </div>
+      <div class="ch"><span class="ct">Comparativo sedes</span></div>
+      <div style="height:200px;"><canvas id="chart-sedes"></canvas></div>
     </div>
     <div class="card">
-      <div class="ch"><span class="ct">Detalle por doctor</span></div>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Doctor(a)</th><th>Citas</th><th>%</th></tr></thead>
-          <tbody id="tbl-doc"></tbody>
-        </table>
-      </div>
+      <div class="ch"><span class="ct">Contact ratio por sede (%)</span></div>
+      <div style="height:200px;"><canvas id="chart-sedes-ratio"></canvas></div>
     </div>
   </div>
   <div class="card">
-    <div class="ch"><span class="ct">Actividades más frecuentes · período seleccionado</span></div>
-    <div id="act-bars"></div>
+    <div class="ch"><span class="ct">Detalle comparativo</span></div>
+    <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Sede</th><th>Total</th><th>Contactadas</th><th>Contact ratio</th><th>Confirman</th><th>Cancela</th></tr></thead>
+      <tbody id="tbl-sedes"></tbody>
+    </table>
+    </div>
   </div>
 </div>
 
-</div><!-- /wrap -->
+</div>
 
 <script>
 Chart.register(ChartDataLabels);
 
-// ══ DATOS COMPLETOS ══════════════════════════════════════════════
+// ══ DATA — todos los días ══════════════════════════════
+// key: DMESES (521=21may, 602=2jun, etc.)
+// total, answered, vm, na, busy, inv, will, wont, ignored, dur[1-15,16-30,31-45,>45]
 const DATA = {
-  '504':{label:'4 may',total:74,  answered:53, vm:9,  na:10, busy:1, invalid:1, noring:0, will:38, wont:1, ignored:14, dur:[2,2,7,42]},
-  '505':{label:'5 may',total:75,  answered:63, vm:4,  na:6,  busy:1, invalid:0, noring:1, will:39, wont:3, ignored:21, dur:[3,3,12,45]},
-  '506':{label:'6 may',total:50,  answered:46, vm:2,  na:2,  busy:0, invalid:0, noring:0, will:31, wont:1, ignored:14, dur:[2,2,5,37]},
-  '508':{label:'8 may',total:81,  answered:68, vm:4,  na:9,  busy:0, invalid:0, noring:0, will:39, wont:3, ignored:26, dur:[6,3,3,56]},
-  '512':{label:'12 may',total:109,answered:85, vm:8,  na:13, busy:1, invalid:2, noring:0, will:53, wont:4, ignored:28, dur:[5,3,13,64]},
-  '513':{label:'13 may',total:80, answered:62, vm:4,  na:13, busy:0, invalid:1, noring:0, will:36, wont:0, ignored:26, dur:[3,2,1,56]},
-  '515':{label:'15 may',total:79, answered:62, vm:10, na:6,  busy:0, invalid:1, noring:0, will:44, wont:2, ignored:16, dur:[5,2,5,50]},
-  '519':{label:'19 may',total:114,answered:94, vm:9,  na:11, busy:0, invalid:0, noring:0, will:60, wont:0, ignored:34, dur:[10,0,12,72]},
-  '520':{label:'20 may',total:61, answered:51, vm:4,  na:6,  busy:0, invalid:0, noring:0, will:34, wont:1, ignored:16, dur:[4,2,5,40]},
-  '522':{label:'22 may',total:76, answered:56, vm:8,  na:8,  busy:2, invalid:1, noring:1, will:30, wont:2, ignored:24, dur:[4,4,6,42]},
-  '527':{label:'27 may',total:82, answered:67, vm:6,  na:5,  busy:0, invalid:0, noring:4, will:39, wont:3, ignored:25, dur:[6,1,3,57]},
-  '528':{label:'28 may',total:56, answered:45, vm:4,  na:6,  busy:0, invalid:1, noring:0, will:26, wont:0, ignored:19, dur:[4,0,5,36]},
-  '602':{label:'2 jun', total:114,answered:87, vm:16, na:10, busy:1, invalid:0, noring:0, will:67, wont:4, ignored:16, dur:[2,3,4,78]},
-  '603':{label:'3 jun', total:129,answered:101,vm:13, na:14, busy:1, invalid:0, noring:0, will:70, wont:3, ignored:28, dur:[5,3,7,86]},
-  '604':{label:'4 jun', total:155,answered:130,vm:8,  na:14, busy:2, invalid:1, noring:0, will:89, wont:5, ignored:36, dur:[10,5,5,110]},
-  '605':{label:'5 jun', total:97, answered:76, vm:3,  na:18, busy:0, invalid:0, noring:0, will:53, wont:0, ignored:23, dur:[2,1,4,69]},
+  521:{total:49, answered:32, vm:3,  na:12, busy:2, inv:0, will:21, wont:2,  ignored:9,  dur:[4,3,1,24]},
+  522:{total:51, answered:39, vm:2,  na:9,  busy:1, inv:0, will:29, wont:4,  ignored:6,  dur:[1,1,3,34]},
+  523:{total:10, answered:8,  vm:0,  na:1,  busy:1, inv:0, will:8,  wont:0,  ignored:0,  dur:[0,0,0,8]},
+  525:{total:29, answered:17, vm:5,  na:6,  busy:1, inv:0, will:12, wont:0,  ignored:5,  dur:[1,1,0,15]},
+  526:{total:38, answered:23, vm:9,  na:6,  busy:0, inv:0, will:20, wont:0,  ignored:3,  dur:[1,0,0,22]},
+  527:{total:64, answered:43, vm:9,  na:12, busy:0, inv:0, will:29, wont:7,  ignored:7,  dur:[2,2,2,37]},
+  529:{total:21, answered:16, vm:3,  na:2,  busy:0, inv:0, will:12, wont:2,  ignored:2,  dur:[0,0,2,14]},
+  530:{total:11, answered:9,  vm:2,  na:0,  busy:0, inv:0, will:7,  wont:1,  ignored:1,  dur:[0,0,0,9]},
+  602:{total:42, answered:27, vm:4,  na:9,  busy:2, inv:0, will:20, wont:2,  ignored:5,  dur:[0,1,1,25]},
+  603:{total:66, answered:47, vm:9,  na:8,  busy:1, inv:1, will:37, wont:4,  ignored:6,  dur:[1,0,1,45]},
+  605:{total:25, answered:16, vm:5,  na:1,  busy:1, inv:2, will:13, wont:1,  ignored:2,  dur:[2,0,1,13]},
+  606:{total:55, answered:44, vm:4,  na:6,  busy:1, inv:0, will:28, wont:5,  ignored:11, dur:[2,3,4,35]},
+  609:{total:54, answered:41, vm:4,  na:7,  busy:1, inv:1, will:27, wont:1,  ignored:13, dur:[5,2,2,32]},
 };
 
-// Doctor data per day (estimated from file samples & known ratios)
-const DOC_DATA = {
-  '504':{smb:28,jdcp:12,dcce:10,jcpg:14,mb:10},
-  '505':{smb:30,jdcp:18,dcce:14,jcpg:8,mb:5},
-  '506':{smb:20,jdcp:12,dcce:10,jcpg:5,mb:3},
-  '508':{smb:32,jdcp:18,dcce:16,jcpg:10,mb:5},
-  '512':{smb:40,jdcp:26,dcce:20,jcpg:15,mb:8},
-  '513':{smb:30,jdcp:20,dcce:14,jcpg:10,mb:6},
-  '515':{smb:28,jdcp:20,dcce:14,jcpg:10,mb:7},
-  '519':{smb:42,jdcp:28,dcce:20,jcpg:14,mb:10},
-  '520':{smb:24,jdcp:14,dcce:10,jcpg:8,mb:5},
-  '522':{smb:28,jdcp:20,dcce:12,jcpg:10,mb:6},
-  '527':{smb:30,jdcp:22,dcce:14,jcpg:10,mb:6},
-  '528':{smb:20,jdcp:14,dcce:10,jcpg:7,mb:5},
-  '602':{smb:42,jdcp:28,dcce:22,jcpg:14,mb:8},
-  '603':{smb:48,jdcp:32,dcce:24,jcpg:16,mb:9},
-  '604':{smb:58,jdcp:38,dcce:30,jcpg:18,mb:11},
-  '605':{smb:32,jdcp:24,dcce:18,jcpg:12,mb:11},
+const ALL_DAYS=[521,522,523,525,526,527,529,530,602,603,605,606,609];
+const MAY_DAYS=[521,522,523,525,526,527,529,530];
+const JUN_DAYS=[602,603,605,606,609];
+const DAY_LABELS={521:'21 may',522:'22 may',523:'23 may',525:'25 may',526:'26 may',527:'27 may',529:'29 may',530:'30 may',602:'2 jun',603:'3 jun',605:'5 jun',606:'6 jun',609:'9 jun'};
+const SVC_COLORS=['#007bff','#20c997','#17a2b8','#6610f2','#6f42c1','#e83e8c','#fd7e14'];
+
+// Sedes data per day (fundacion / nova)
+const SEDE_DATA = {
+  521:{f:{t:49,a:32,will:21,wont:2}, n:{t:0,a:0,will:0,wont:0}},
+  522:{f:{t:51,a:39,will:29,wont:4}, n:{t:0,a:0,will:0,wont:0}},
+  523:{f:{t:10,a:8,will:8,wont:0},   n:{t:0,a:0,will:0,wont:0}},
+  525:{f:{t:29,a:17,will:12,wont:0}, n:{t:0,a:0,will:0,wont:0}},
+  526:{f:{t:24,a:15,will:13,wont:0}, n:{t:14,a:8,will:7,wont:0}},
+  527:{f:{t:38,a:27,will:19,wont:5}, n:{t:26,a:16,will:10,wont:2}},
+  529:{f:{t:21,a:16,will:12,wont:2}, n:{t:0,a:0,will:0,wont:0}},
+  530:{f:{t:11,a:9,will:7,wont:1},   n:{t:0,a:0,will:0,wont:0}},
+  602:{f:{t:22,a:14,will:11,wont:1}, n:{t:20,a:13,will:9,wont:1}},
+  603:{f:{t:45,a:33,will:26,wont:3}, n:{t:21,a:14,will:11,wont:1}},
+  605:{f:{t:18,a:12,will:10,wont:1}, n:{t:7,a:4,will:3,wont:0}},
+  606:{f:{t:47,a:38,will:24,wont:5}, n:{t:8,a:6,will:4,wont:0}},
+  609:{f:{t:15,a:13,will:10,wont:1}, n:{t:39,a:28,will:17,wont:0}},
 };
 
-const ACT_GLOBAL = {
-  'Entrega Prótesis':320,'Impresión Preliminar':280,'Prueba de Enfilado':240,
-  'Prueba de Rodete':220,'Valoración':200,'Impresión Definitiva':110,'Control':62
-};
-
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605'];
-const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
-const JUNIO_DAYS=['602','603','604','605'];
-const DOC_COLORS=['#0c41ab','#2e63cd','#5a78d0','#8298d8','#b0bce8'];
-const DOC_NAMES=['Sandra M. Bolaños','José D. Castro P.','Diana C. Castro E.','Julio C. Páez G.','Marcelo Benjumea'];
-const DOC_KEYS=['smb','jdcp','dcce','jcpg','mb'];
-
-// ══ UTILS ════════════════════════════════════════════════════════
-const fmt=n=>Number(n).toLocaleString('es-CO');
-const pct=(a,b)=>b?((a/b)*100).toFixed(1)+'%':'0.0%';
-const pctN=(a,b)=>b?parseFloat(((a/b)*100).toFixed(1)):0;
-
+// Aggregated function
 function agg(days){
-  const r={total:0,answered:0,vm:0,na:0,busy:0,invalid:0,noring:0,will:0,wont:0,ignored:0,dur:[0,0,0,0],doc:{smb:0,jdcp:0,dcce:0,jcpg:0,mb:0}};
+  const r={total:0,answered:0,vm:0,na:0,busy:0,inv:0,will:0,wont:0,ignored:0,dur:[0,0,0,0],
+    sede:{f:{t:0,a:0,will:0,wont:0},n:{t:0,a:0,will:0,wont:0}}};
   days.forEach(d=>{
-    const v=DATA[d]; const dd=DOC_DATA[d]||{};
-    r.total+=v.total;r.answered+=v.answered;r.vm+=v.vm;r.na+=v.na;
-    r.busy+=v.busy;r.invalid+=v.invalid;r.noring+=v.noring||0;
+    const v=DATA[d]; const s=SEDE_DATA[d];
+    r.total+=v.total;r.answered+=v.answered;r.vm+=v.vm;r.na+=v.na;r.busy+=v.busy;r.inv+=v.inv;
     r.will+=v.will;r.wont+=v.wont;r.ignored+=v.ignored;
     v.dur.forEach((x,i)=>r.dur[i]+=x);
-    DOC_KEYS.forEach(k=>{r.doc[k]+=(dd[k]||0);});
+    ['f','n'].forEach(k=>{r.sede[k].t+=s[k].t;r.sede[k].a+=s[k].a;r.sede[k].will+=s[k].will;r.sede[k].wont+=s[k].wont;});
   });
   return r;
 }
 
-// ══ NAV ══════════════════════════════════════════════════════════
+function fmt(n){return Number(n).toLocaleString('es-CO');}
+function pct(a,b){return b?((a/b)*100).toFixed(1)+'%':'0%';}
+function pctN(a,b){return b?parseFloat(((a/b)*100).toFixed(1)):0;}
+
+// ══ NAV ════════════════════════════════════════════════
 function st(id){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['resumen','tendencia','doctores'][i]===id));
+  const ids=['resumen','tendencia','sedes'];
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',ids[i]===id));
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='p-'+id));
+  rebuildActive();
+}
+function rebuildActive(){
+  const a=document.querySelector('.page.active');
+  if(!a) return;
+  const id=a.id.replace('p-','');
   if(id==='tendencia') buildTendencia();
-  else if(id==='doctores') buildDoctores();
+  else if(id==='sedes') buildSedes();
 }
 
-// ══ FILTER ═══════════════════════════════════════════════════════
+// ══ FILTER ═════════════════════════════════════════════
 function onPeriodo(){
   const p=document.getElementById('periodo-sel').value;
   document.getElementById('fecha-wrap').style.display=p==='fecha'?'flex':'none';
@@ -425,260 +372,274 @@ function onPeriodo(){
 
 function getRange(){
   const p=document.getElementById('periodo-sel').value;
-  if(p==='mayo') return MAYO_DAYS;
-  if(p==='junio') return JUNIO_DAYS;
+  if(p==='may') return MAY_DAYS;
+  if(p==='jun') return JUN_DAYS;
   if(p==='todos') return ALL_DAYS;
-  if(p==='fecha') return [document.getElementById('fecha-sel').value];
+  if(p==='fecha') return [+document.getElementById('fecha-sel').value];
   if(p==='rango'){
-    const d1=document.getElementById('rango-desde').value;
-    const d2=document.getElementById('rango-hasta').value;
-    const i1=ALL_DAYS.indexOf(d1), i2=ALL_DAYS.indexOf(d2);
-    return ALL_DAYS.slice(Math.min(i1,i2),Math.max(i1,i2)+1);
+    const d1=+document.getElementById('rango-desde').value;
+    const d2=+document.getElementById('rango-hasta').value;
+    return ALL_DAYS.filter(d=>d>=Math.min(d1,d2)&&d<=Math.max(d1,d2));
   }
-  return ['605'];
+  return [609];
 }
 
-// ══ CHARTS STATE ═════════════════════════════════════════════════
-let cEncuesta=null,cTendBar=null,cCrLine=null,cCancelBar=null,cDocBar=null,cDocPie=null;
+// ══ CHARTS STATE ═══════════════════════════════════════
+let donutChart=null,tendBarChart=null,tendContactChart=null,tendCancelChart=null,sedeChart=null,sedeRatioChart=null;
 
-// ══ RESUMEN ══════════════════════════════════════════════════════
 function applyFilter(){
   const days=getRange();
   const v=agg(days);
   const surveyed=v.will+v.wont;
 
-  // Header / pills
-  const lbl=days.length===1?DATA[days[0]].label+' 2026':DATA[days[0]].label+' – '+DATA[days[days.length-1]].label+' 2026';
-  document.getElementById('hdr-meta').innerHTML=lbl+' · <strong>'+fmt(v.total)+'</strong> registros';
+  // Header
+  const lbl=days.length===1?DAY_LABELS[days[0]]+' 2026':DAY_LABELS[days[0]]+' – '+DAY_LABELS[days[days.length-1]]+' 2026';
+  document.getElementById('hdr-meta').innerHTML='<strong>'+lbl+' · '+fmt(v.total)+' registros</strong>';
   document.getElementById('pill-citas').textContent=fmt(v.total)+' citas';
   document.getElementById('lbl-periodo').textContent='INDICADORES · '+lbl.toUpperCase();
 
   // KPIs
   document.getElementById('k-total').textContent=fmt(v.total);
-  document.getElementById('k-total-s').textContent=days.length>1?days.length+' jornadas · ~'+Math.round(v.total/days.length)+'/día':'1 jornada';
+  document.getElementById('k-total-s').textContent=days.length>1?days.length+' días · ~'+fmt(Math.round(v.total/days.length))+'/día':'1 día seleccionado';
   document.getElementById('k-contact').textContent=fmt(v.answered);
-  document.getElementById('k-cr').textContent=pct(v.answered,v.total);
-  document.getElementById('k-will').textContent=fmt(v.will);
-  document.getElementById('k-will-p').textContent=pct(v.will,surveyed);
-  document.getElementById('k-wont').textContent=fmt(v.wont);
-  document.getElementById('k-wont-p').textContent=pct(v.wont,surveyed);
+  document.getElementById('k-contact-p').textContent=pct(v.answered,v.total);
+  document.getElementById('k-asiste').textContent=fmt(v.will);
+  document.getElementById('k-asiste-p').textContent=pct(v.will,surveyed);
+  document.getElementById('k-cancel').textContent=fmt(v.wont);
+  document.getElementById('k-cancel-p').textContent=pct(v.wont,surveyed);
 
-  // Cancelaciones
-  document.getElementById('cancel-badge').textContent=v.wont+(v.wont===1?' cupo libre':' cupos libres');
-  document.getElementById('cancel-desc').textContent=v.wont+(v.wont===1?' paciente solicitó cancelar su cita':' pacientes solicitaron cancelar su cita')+' durante el período seleccionado.';
-
-  // Estimated cancels by activity (proportional from global)
-  const actTotal=Object.values(ACT_GLOBAL).reduce((a,b)=>a+b,0);
-  const acts=['Entrega Prótesis','Impresión Preliminar','Prueba de Enfilado','Prueba de Rodete','Valoración'];
-  const actCancels={};
-  let assigned=0;
-  acts.forEach((a,i)=>{
-    const c=i<acts.length-1?Math.round(v.wont*(ACT_GLOBAL[a]/actTotal)*2):Math.max(0,v.wont-assigned);
-    actCancels[a]=c; assigned+=c;
-  });
-  // Adjust last
-  const sum=Object.values(actCancels).reduce((a,b)=>a+b,0);
-  if(sum!==v.wont){const diff=v.wont-sum; actCancels[acts[0]]+=diff;}
-
-  let cancelHTML='';
-  acts.forEach(a=>{
-    const c=actCancels[a]||0;
-    cancelHTML+=`<div class="cp ${c>0?'hi':''}"><div class="cp-n">${c}</div><div class="cp-l">${a}</div></div>`;
-  });
-  cancelHTML+=`<div class="cp tot"><div class="cp-n">${v.wont}</div><div class="cp-l">Total recuperable</div></div>`;
-  document.getElementById('cancel-grid').innerHTML=cancelHTML;
-
+  // CUPOS — servicios con cancelaciones hardcoded por día
+  const svcCancelMap={
+    521:{'Neurología':1,'Clínica de Dolor':1},
+    522:{'Neurología':2,'Clínica de Dolor':2},
+    527:{'Neurología':4,'Clínica de Dolor':2,'Ondas de Choque':1},
+    529:{'Neurología':2},
+    530:{'Neurología':1},
+    602:{'Clínica de Dolor':1,'Neurología':1},
+    603:{'Neurología':2,'Clínica de Dolor':1,'Dolor y C.Paliativos':1},
+    605:{'Neurología':1},
+    606:{'Neurología':3,'Clínica de Dolor':1,'1ª vez Dolor':1},
+    609:{'Neurología':1},
+  };
+  const svcTot={};
+  days.forEach(d=>{if(svcCancelMap[d])Object.keys(svcCancelMap[d]).forEach(s=>{svcTot[s]=(svcTot[s]||0)+svcCancelMap[d][s];});});
+  document.getElementById('cupos-badge').textContent=v.wont+(v.wont===1?' cupo libre':' cupos libres');
+  document.getElementById('cupos-desc').textContent=v.wont+(v.wont===1?' paciente solicitó cancelar':' pacientes solicitaron cancelar')+' durante el período seleccionado.';
+  const svcKeys=Object.keys(svcTot);
+  document.getElementById('cupos-grid').innerHTML=svcKeys.map(s=>`
+    <div class="cp"><div class="cp-l">${s}</div><div class="cp-n">${svcTot[s]}</div><div class="cp-s">${svcTot[s]===1?'cupo':'cupos'}</div></div>
+  `).join('')+`<div class="cp-tot"><div class="cp-tot-n">${v.wont}</div><div class="cp-tot-l">Total recuperable</div></div>`;
   if(v.wont>0){
-    document.getElementById('cancel-alert').innerHTML=`<div class="aa">⚠ Se liberaron <strong>${v.wont} cupos</strong>. Tasa de cancelación: <strong>${pct(v.wont,surveyed)}</strong> sobre encuestados. Los cupos están disponibles para reasignación.</div>`;
-  } else {
-    document.getElementById('cancel-alert').innerHTML=`<div class="at">✅ <strong>0 cancelaciones</strong> en el período. El 100% de los encuestados confirmó asistencia.</div>`;
-  }
+    const top=svcKeys.sort((a,b)=>svcTot[b]-svcTot[a]).slice(0,2).map(s=>`<strong>${s}</strong>`).join(' y ');
+    document.getElementById('cupos-alert').innerHTML=`<div class="aa">⚠ ${top} concentra${svcKeys.length>1?'n':''} la mayor parte de cancelaciones. Tasa: ${pct(v.wont,surveyed)} sobre encuestados.</div>`;
+  } else document.getElementById('cupos-alert').innerHTML='';
 
   // DONUT
   const nc=v.total-v.answered;
-  if(cEncuesta)cEncuesta.destroy();
-  cEncuesta=new Chart(document.getElementById('dc-encuesta'),{
+  if(donutChart)donutChart.destroy();
+  donutChart=new Chart(document.getElementById('dc'),{
     type:'doughnut',
     data:{labels:['Asistirá','Cancela','Ignoró encuesta','No contactado'],
-      datasets:[{data:[v.will,v.wont,v.ignored,nc],
-        backgroundColor:['#1a9e60','#c0392b','#94a3b8','#e2e8f0'],
-        borderWidth:2,borderColor:'#fff'}]},
-    options:{responsive:true,maintainAspectRatio:true,cutout:'68%',
+      datasets:[{data:[v.will,v.wont,v.ignored,nc],backgroundColor:['#28a745','#dc3545','#adb5bd','#dee2e6'],borderWidth:2,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:true,cutout:'65%',
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.label+': '+fmt(c.raw)}},datalabels:{display:false}}}
   });
   document.getElementById('dc-legend').innerHTML=[
-    ['#1a9e60','Asistirá','will'],
-    ['#c0392b','Cancela','wont'],
-    ['#94a3b8','Ignoró encuesta','ignored'],
-    ['#e2e8f0','No contactado','nc'],
-  ].map(([c,t,k])=>{
-    const val=k==='nc'?nc:v[k];
-    return `<div class="leg"><div class="leg-dot" style="background:${c};border:1px solid rgba(0,0,0,.1)"></div>${t} — <strong>${fmt(val)}</strong> (${pct(val,v.total)})</div>`;
-  }).join('');
+    ['#28a745','Asistirá — '+fmt(v.will)+' ('+pct(v.will,v.total)+')'],
+    ['#dc3545','Cancela — '+fmt(v.wont)+' ('+pct(v.wont,v.total)+')'],
+    ['#adb5bd','Ignoró encuesta — '+fmt(v.ignored)],
+    ['#dee2e6','No contactado — '+fmt(nc)],
+  ].map(([c,t])=>`<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text);margin-bottom:7px;"><span style="width:10px;height:10px;border-radius:3px;background:${c};flex-shrink:0;border:1px solid rgba(0,0,0,.1)"></span>${t}</div>`).join('');
 
   // HBARS llamada
-  document.getElementById('hbar-llamada').innerHTML=[
-    {l:'Contestó (ANSWER)',val:v.answered,col:'#0c41ab'},
-    {l:'No contestó',val:v.na,col:'#d4820a'},
-    {l:'Buzón de voz',val:v.vm,col:'#6a3db8'},
-    {l:'Línea ocupada',val:v.busy,col:'#e47a0a'},
-    {l:'Número inválido',val:v.invalid,col:'#c0392b'},
-    {l:'Sin tono',val:v.noring,col:'#64748b'},
-  ].map(h=>`<div class="hbar">
-    <div class="hbar-lbl">${h.l}</div>
-    <div class="hbar-track"><div class="hbar-fill" style="width:${pctN(h.val,v.total)}%;background:${h.col}"></div></div>
-    <div class="hbar-val">${h.val} · ${pct(h.val,v.total)}</div>
-  </div>`).join('');
+  const hbars=[
+    {lbl:'Contestó',val:v.answered,col:'#343a40'},
+    {lbl:'No contestó',val:v.na,col:'#fd7e14'},
+    {lbl:'Buzón de voz',val:v.vm,col:'#6f42c1'},
+    {lbl:'Línea ocupada',val:v.busy,col:'#ffc107'},
+    {lbl:'Número inválido',val:v.inv,col:'#dc3545'},
+  ];
+  document.getElementById('hbar-llamada').innerHTML=hbars.map(h=>`
+    <div class="hbar">
+      <div class="hbar-lbl">${h.lbl}</div>
+      <div class="hbar-track"><div class="hbar-fill" style="width:${v.total?pctN(h.val,v.total):0}%;background:${h.col}"></div></div>
+      <div class="hbar-val">${h.val} · ${pct(h.val,v.total)}</div>
+    </div>`).join('');
 
   // DURATION
   const durMax=Math.max(...v.dur)||1;
-  const dCols=['#c0392b','#d4820a','#2e63cd','#1a9e60'];
-  const dLbls=['1–15 seg','16–30 seg','31–45 seg','>45 seg'];
+  const dLabels=['1–15 seg','16–30 seg','31–45 seg','>45 seg'];
+  const dColors=['#dc3545','#ffc107','#17a2b8','#28a745'];
   document.getElementById('dur-grid').innerHTML=v.dur.map((d,i)=>`
     <div>
-      <div class="dv" style="color:${dCols[i]}">${d}</div>
-      <div class="dbw"><div class="db" style="height:${Math.max(4,(d/durMax)*100)}%;background:${dCols[i]}"></div></div>
-      <div class="dl">${dLbls[i]}</div>
-      <div class="dp" style="color:${dCols[i]}">${pct(d,v.answered)}</div>
+      <div class="dv" style="color:${dColors[i]}">${d}</div>
+      <div class="dbw"><div class="db" style="height:${Math.max(4,(d/durMax)*100)}%;background:${dColors[i]}"></div></div>
+      <div class="dl">${dLabels[i]}</div>
+      <div class="dp">${pct(d,v.answered)}</div>
     </div>`).join('');
-  const p45=v.answered?((v.dur[3]/v.answered)*100).toFixed(1):0;
-  document.getElementById('dur-alert').innerHTML=`<div class="at" style="margin-top:8px;">El <strong>${p45}%</strong> de las llamadas superó los 45 seg — indicando interacción de alta calidad con el paciente.</div>`;
+  const pct45=v.answered?((v.dur[3]/v.answered)*100).toFixed(1):0;
+  document.getElementById('dur-alert').innerHTML=`<div class="at">El <strong>${pct45}%</strong> de llamadas superan los 45 segundos, indicando buena calidad de interacción.</div>`;
 
-  // METRICAS
-  const avgDur=v.answered>0?Math.round((v.dur[0]*8+v.dur[1]*23+v.dur[2]*38+v.dur[3]*65)/v.answered):0;
-  document.getElementById('metricas-sub').textContent=lbl;
-  document.getElementById('metricas-grid').innerHTML=`
-    <div class="stat-box"><div class="stat-n" style="color:var(--primary)">${pct(v.answered,v.total)}</div><div class="stat-l">Contact Ratio</div></div>
-    <div class="stat-box"><div class="stat-n" style="color:var(--green)">${pct(v.will,surveyed)}</div><div class="stat-l">Tasa de Confirmación</div></div>
-    <div class="stat-box"><div class="stat-n" style="color:var(--teal,#2e63cd)">${pct(surveyed,v.answered)}</div><div class="stat-l">Survey Ratio</div></div>
-  `;
-
-  // Rebuild active tab
-  const active=document.querySelector('.page.active');
-  if(active&&active.id==='p-tendencia') buildTendencia();
-  else if(active&&active.id==='p-doctores') buildDoctores();
+  // SERVICIOS — aggregated from days
+  const svcAgg={};
+  const svcByDay={
+    521:{'Neurología':28,'Clínica de Dolor':14,'Dolor y C.Paliativos':7},
+    522:{'Neurología':29,'Clínica de Dolor':15,'Dolor y C.Paliativos':7},
+    523:{'Neurología':10},
+    525:{'Neurología':20,'Clínica de Dolor':5,'1ª vez Dolor':4},
+    526:{'Neurología':22,'Clínica de Dolor':9,'1ª vez Dolor':4,'Ondas de Choque':3},
+    527:{'Neurología':35,'Clínica de Dolor':12,'Ondas de Choque':6,'Toxina Botulínica':3,'Dolor y C.Paliativos':4,'1ª vez Dolor':4},
+    529:{'Neurología':21},
+    530:{'Neurología':11},
+    602:{'Neurología':18,'Clínica de Dolor':12,'Ondas de Choque':6,'Dolor y C.Paliativos':4,'1ª vez Dolor':2},
+    603:{'Neurología':38,'Clínica de Dolor':10,'Dolor y C.Paliativos':8,'Ondas de Choque':5,'1ª vez Neurología':5},
+    605:{'Neurología':19,'Clínica de Dolor':4,'1ª vez Neurología':2},
+    606:{'Neurología':31,'Clínica de Dolor':12,'1ª vez Neurología':5,'Dolor y C.Paliativos':4,'1ª vez Dolor':3},
+    609:{'Neurología':28,'Clínica de Dolor':11,'Ondas de Choque':6,'Dolor y C.Paliativos':4,'1ª vez Dolor':4,'C.Paliativos Amb.':1},
+  };
+  days.forEach(d=>{if(svcByDay[d])Object.keys(svcByDay[d]).forEach(s=>{svcAgg[s]=(svcAgg[s]||0)+svcByDay[d][s];});});
+  const svcSorted=Object.keys(svcAgg).sort((a,b)=>svcAgg[b]-svcAgg[a]);
+  document.getElementById('svc-total').textContent=fmt(v.total)+' citas programadas';
+  document.getElementById('svc-bars').innerHTML=svcSorted.map((s,i)=>`
+    <div class="br">
+      <div class="bl">${s}</div>
+      <div class="bt"><div class="bf" style="width:${pctN(svcAgg[s],v.total)}%;background:${SVC_COLORS[i%SVC_COLORS.length]}"></div></div>
+      <div class="bv"><strong>${svcAgg[s]}</strong> · ${pct(svcAgg[s],v.total)}</div>
+    </div>`).join('');
+  // Rebuild whichever non-resumen tab is active
+  rebuildActive();
 }
 
-// ══ TENDENCIA ════════════════════════════════════════════════════
+// ══ TENDENCIA ══════════════════════════════════════════
 function buildTendencia(){
   const days=getRange();
-  const gc='rgba(0,0,0,0.04)',tc='#666';
-  const lbls=days.map(d=>DATA[d].label);
+  const gc='rgba(0,0,0,0.05)', tc='#6c757d';
   const totals=days.map(d=>DATA[d].total);
   const answ=days.map(d=>DATA[d].answered);
-  const crs=days.map(d=>pctN(DATA[d].answered,DATA[d].total));
-  const wont=days.map(d=>DATA[d].wont);
+  const ratios=days.map(d=>pctN(DATA[d].answered,DATA[d].total));
+  const cancels=days.map(d=>DATA[d].wont);
+  const lbls=days.map(d=>DAY_LABELS[d]);
 
-  if(cTendBar)cTendBar.destroy();
-  cTendBar=new Chart(document.getElementById('chart-tend-bar'),{
+  if(tendBarChart)tendBarChart.destroy();
+  tendBarChart=new Chart(document.getElementById('chart-tend-bar'),{
     type:'bar',
     data:{labels:lbls,datasets:[
-      {label:'Total',data:totals,backgroundColor:'rgba(12,65,171,0.25)',borderColor:'#0c41ab',borderWidth:2,borderRadius:4},
-      {label:'Contactadas',data:answ,backgroundColor:'#1a9e60',borderRadius:4}
+      {label:'Total',data:totals,backgroundColor:'#007bff',borderRadius:4},
+      {label:'Contactadas',data:answ,backgroundColor:'#28a745',borderRadius:4}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:24}},
-      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
-        datalabels:{anchor:'end',align:'top',font:{weight:'700',size:10},color:'#333',formatter:v=>v>0?v:''}},
-      scales:{x:{ticks:{color:tc,font:{size:10}},grid:{color:gc}},y:{beginAtZero:true,ticks:{color:tc},grid:{color:gc}}}}
+      layout:{padding:{top:22}},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11}}},
+        datalabels:{anchor:'end',align:'top',color:'#343a40',font:{weight:'700',size:10},formatter:v=>v>0?v:''}},
+      scales:{x:{ticks:{color:tc,font:{size:11}},grid:{color:gc}},y:{beginAtZero:true,ticks:{color:tc},grid:{color:gc}}}}
   });
 
-  if(cCrLine)cCrLine.destroy();
-  cCrLine=new Chart(document.getElementById('chart-cr-line'),{
+  if(tendContactChart)tendContactChart.destroy();
+  tendContactChart=new Chart(document.getElementById('chart-tend-contact'),{
     type:'line',
-    data:{labels:lbls,datasets:[{data:crs,borderColor:'#0c41ab',backgroundColor:'rgba(12,65,171,0.08)',tension:.35,pointRadius:5,pointBackgroundColor:'#0c41ab',fill:true}]},
+    data:{labels:lbls,datasets:[{data:ratios,borderColor:'#007bff',backgroundColor:'rgba(0,123,255,0.1)',tension:.35,pointRadius:5,pointBackgroundColor:'#007bff',fill:true}]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},
-        datalabels:{anchor:'top',align:'top',color:'#0c41ab',font:{weight:'700',size:9},formatter:v=>v.toFixed(1)+'%'}},
-      scales:{x:{ticks:{color:tc,font:{size:9}},grid:{color:gc}},y:{min:50,max:100,ticks:{color:tc,callback:v=>v+'%'},grid:{color:gc}}}}
+        datalabels:{anchor:'top',align:'top',color:'#007bff',font:{weight:'700',size:10},formatter:v=>parseFloat(v).toFixed(1)+'%'}},
+      scales:{x:{ticks:{color:tc,font:{size:10}},grid:{color:gc}},y:{min:40,max:100,ticks:{color:tc,callback:v=>v+'%'},grid:{color:gc}}}}
   });
 
-  if(cCancelBar)cCancelBar.destroy();
-  cCancelBar=new Chart(document.getElementById('chart-cancel-bar'),{
+  if(tendCancelChart)tendCancelChart.destroy();
+  tendCancelChart=new Chart(document.getElementById('chart-tend-cancel'),{
     type:'bar',
-    data:{labels:lbls,datasets:[{data:wont,backgroundColor:'#c0392b',borderRadius:4}]},
+    data:{labels:lbls,datasets:[{data:cancels,backgroundColor:'#dc3545',borderRadius:4}]},
     options:{responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:24}},
+      layout:{padding:{top:22}},
       plugins:{legend:{display:false},
-        datalabels:{anchor:'end',align:'top',color:'#c0392b',font:{weight:'700',size:11},formatter:v=>v>0?v:''}},
-      scales:{x:{ticks:{color:tc,font:{size:9}},grid:{color:gc}},y:{beginAtZero:true,ticks:{color:tc,stepSize:1},grid:{color:gc}}}}
+        datalabels:{anchor:'end',align:'top',color:'#dc3545',font:{weight:'700',size:11},formatter:v=>v>0?v:''}},
+      scales:{x:{ticks:{color:tc,font:{size:10}},grid:{color:gc}},y:{beginAtZero:true,ticks:{color:tc,stepSize:1},grid:{color:gc}}}}
   });
 
   // Table
   document.getElementById('tbl-tend').innerHTML=days.map(d=>{
     const v=DATA[d]; const s=v.will+v.wont;
-    const cr=pctN(v.answered,v.total);
     return `<tr>
-      <td><strong>${v.label} 2026</strong></td>
-      <td>${v.total}</td>
-      <td>${v.answered}</td>
-      <td><span class="bdg ${cr>=80?'b-g':cr>=70?'b-y':'b-r'}">${cr.toFixed(1)}%</span></td>
-      <td>${v.will}</td>
-      <td>${v.wont>0?'<span class="bdg b-r">'+v.wont+'</span>':'<span class="bdg b-g">0</span>'}</td>
+      <td><strong>${DAY_LABELS[d]} 2026</strong></td>
+      <td>${v.total}</td><td>${v.answered}</td>
+      <td><span class="bdg ${pctN(v.answered,v.total)>=70?'b-g':'b-y'}">${pct(v.answered,v.total)}</span></td>
+      <td>${v.will}</td><td>${v.wont}</td>
       <td>${pct(s,v.answered)}</td>
-      <td>${pct(v.dur[3],v.answered)}</td>
     </tr>`;
-  }).join('')+`<tr class="tot">
-    <td><strong>TOTAL</strong></td>
-    <td><strong>${fmt(days.reduce((a,d)=>a+DATA[d].total,0))}</strong></td>
-    <td><strong>${fmt(days.reduce((a,d)=>a+DATA[d].answered,0))}</strong></td>
+  }).join('')+`<tr class="tot"><td><strong>TOTAL</strong></td>
+    <td>${fmt(days.reduce((a,d)=>a+DATA[d].total,0))}</td>
+    <td>${fmt(days.reduce((a,d)=>a+DATA[d].answered,0))}</td>
     <td><strong>${pct(days.reduce((a,d)=>a+DATA[d].answered,0),days.reduce((a,d)=>a+DATA[d].total,0))}</strong></td>
-    <td><strong>${days.reduce((a,d)=>a+DATA[d].will,0)}</strong></td>
-    <td><strong>${days.reduce((a,d)=>a+DATA[d].wont,0)}</strong></td>
-    <td>—</td><td>—</td>
-  </tr>`;
+    <td>${days.reduce((a,d)=>a+DATA[d].will,0)}</td>
+    <td>${days.reduce((a,d)=>a+DATA[d].wont,0)}</td>
+    <td>—</td></tr>`;
 }
 
-// ══ DOCTORES ═════════════════════════════════════════════════════
-function buildDoctores(){
+// ══ SEDES ══════════════════════════════════════════════
+function buildSedes(){
   const days=getRange();
   const v=agg(days);
-  const gc='rgba(0,0,0,0.04)',tc='#666';
-  const docVals=DOC_KEYS.map(k=>v.doc[k]);
-  const docTotal=docVals.reduce((a,b)=>a+b,0);
+  const gc='rgba(0,0,0,0.05)', tc='#6c757d';
 
-  document.getElementById('doc-sub').textContent=fmt(v.total)+' citas · '+days.length+' jornada'+(days.length>1?'s':'');
-
-  if(cDocBar)cDocBar.destroy();
-  cDocBar=new Chart(document.getElementById('chart-doc-bar'),{
+  if(sedeChart)sedeChart.destroy();
+  sedeChart=new Chart(document.getElementById('chart-sedes'),{
     type:'bar',
-    data:{labels:DOC_NAMES,datasets:[{label:'Citas',data:docVals,backgroundColor:DOC_COLORS,borderRadius:5}]},
+    data:{labels:['IPS Fundación','Nova Local 108'],
+      datasets:[
+        {label:'Total citas',data:[v.sede.f.t,v.sede.n.t],backgroundColor:'#007bff',borderRadius:4},
+        {label:'Contactadas',data:[v.sede.f.a,v.sede.n.a],backgroundColor:'#28a745',borderRadius:4},
+        {label:'Confirman',data:[v.sede.f.will,v.sede.n.will],backgroundColor:'#20c997',borderRadius:4},
+      ]},
     options:{responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:26}},
+      layout:{padding:{top:22}},
+      plugins:{legend:{position:'bottom',labels:{font:{size:11}}},
+        datalabels:{anchor:'end',align:'top',color:'#343a40',font:{weight:'700',size:11},formatter:v=>v>0?v:''}},
+      scales:{y:{beginAtZero:true,grid:{color:gc}},x:{grid:{color:gc}}}}
+  });
+
+  if(sedeRatioChart)sedeRatioChart.destroy();
+  sedeRatioChart=new Chart(document.getElementById('chart-sedes-ratio'),{
+    type:'bar',
+    data:{labels:['IPS Fundación','Nova Local 108'],
+      datasets:[{
+        label:'Contact ratio %',
+        data:[pctN(v.sede.f.a,v.sede.f.t),pctN(v.sede.n.a,v.sede.n.t)],
+        backgroundColor:['#007bff','#17a2b8'],borderRadius:4
+      }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:22}},
       plugins:{legend:{display:false},
-        datalabels:{anchor:'end',align:'top',color:'#1a1a2e',font:{weight:'800',size:12},formatter:v=>v>0?fmt(v):''}},
-      scales:{x:{ticks:{color:tc,font:{size:11}},grid:{color:gc}},y:{beginAtZero:true,ticks:{color:tc},grid:{color:gc}}}}
+        datalabels:{anchor:'end',align:'top',color:'#343a40',font:{weight:'700',size:12},formatter:v=>v.toFixed(1)+'%'}},
+      scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'},grid:{color:gc}}}}
   });
 
-  if(cDocPie)cDocPie.destroy();
-  cDocPie=new Chart(document.getElementById('dc-doc'),{
-    type:'doughnut',
-    data:{labels:DOC_NAMES,datasets:[{data:docVals,backgroundColor:DOC_COLORS,borderWidth:2,borderColor:'#fff'}]},
-    options:{responsive:true,maintainAspectRatio:true,cutout:'60%',
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.label+': '+fmt(c.raw)}},datalabels:{display:false}}}
-  });
-
-  document.getElementById('doc-legend').innerHTML=DOC_NAMES.map((n,i)=>
-    `<div class="leg"><div class="leg-dot" style="background:${DOC_COLORS[i]}"></div>${n} — <strong>${fmt(docVals[i])}</strong> (${pct(docVals[i],docTotal)})</div>`
-  ).join('');
-
-  document.getElementById('tbl-doc').innerHTML=DOC_NAMES.map((n,i)=>
-    `<tr><td><strong>${n}</strong></td><td>${fmt(docVals[i])}</td><td><span class="bdg b-b">${pct(docVals[i],docTotal)}</span></td></tr>`
-  ).join('')+`<tr class="tot"><td><strong>TOTAL</strong></td><td><strong>${fmt(docTotal)}</strong></td><td><strong>100%</strong></td></tr>`;
-
-  // Actividades bars
-  const actMax=Math.max(...Object.values(ACT_GLOBAL));
-  const actColors=['#0c41ab','#2e63cd','#5a78d0','#8298d8','#aab8e0','#c4cff0','#dae0f8'];
-  document.getElementById('act-bars').innerHTML=Object.entries(ACT_GLOBAL)
-    .sort((a,b)=>b[1]-a[1])
-    .map(([act,cnt],i)=>`<div class="br">
-      <div class="bl">${act}</div>
-      <div class="bt"><div class="bf" style="width:${pctN(cnt,actMax*1.1)}%;background:${actColors[i]}"></div></div>
-      <div class="bv"><strong>${fmt(cnt)}</strong> · ${pct(cnt,Object.values(ACT_GLOBAL).reduce((a,b)=>a+b,0))}</div>
-    </div>`).join('');
+  // Table
+  document.getElementById('tbl-sedes').innerHTML=`
+    <tr>
+      <td><strong>Sede IPS Fundación</strong><br><span style="font-size:10px;color:var(--text2)">Barrio Recreo, Cra 80B #31C-08</span></td>
+      <td>${v.sede.f.t}</td><td>${v.sede.f.a}</td>
+      <td><span class="bdg b-g">${pct(v.sede.f.a,v.sede.f.t)}</span></td>
+      <td>${v.sede.f.will}</td><td>${v.sede.f.wont}</td>
+    </tr>
+    <tr>
+      <td><strong>Sede Nova Local 108</strong><br><span style="font-size:10px;color:var(--text2)">C.C. San Felipe, Local 107-108</span></td>
+      <td>${v.sede.n.t}</td><td>${v.sede.n.a}</td>
+      <td><span class="bdg b-b">${pct(v.sede.n.a,v.sede.n.t)}</span></td>
+      <td>${v.sede.n.will}</td><td>${v.sede.n.wont}</td>
+    </tr>
+    <tr class="tot">
+      <td><strong>TOTAL</strong></td>
+      <td><strong>${v.sede.f.t+v.sede.n.t}</strong></td>
+      <td><strong>${v.sede.f.a+v.sede.n.a}</strong></td>
+      <td><strong>${pct(v.sede.f.a+v.sede.n.a,v.sede.f.t+v.sede.n.t)}</strong></td>
+      <td><strong>${v.sede.f.will+v.sede.n.will}</strong></td>
+      <td><strong>${v.sede.f.wont+v.sede.n.wont}</strong></td>
+    </tr>`;
 }
 
-// ══ INIT ═════════════════════════════════════════════════════════
+// ══ DETALLE TABLE ══════════════════════════════════════
+
+
+// ══ INIT ════════════════════════════════════════════════
 onPeriodo();
 </script>
 </body>
