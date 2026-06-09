@@ -351,38 +351,31 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <div class="cob-row">
     <div class="cob-box p1">
       <div class="cob-n" id="cob-p1">—</div>
-      <div class="cob-l">Solo teléfono principal</div>
-      <div class="cob-sub" id="cob-p1-pct">—% solo un número</div>
+      <div class="cob-l">Con 1 solo teléfono</div>
+      <div class="cob-sub" id="cob-p1-pct">—% sin número alterno</div>
     </div>
     <div class="cob-box p2">
       <div class="cob-n" id="cob-p2">—</div>
-      <div class="cob-l">Con teléfono alternativo</div>
+      <div class="cob-l">Con 2 teléfonos</div>
       <div class="cob-sub" id="cob-p2-pct">—% tiene 2do número</div>
     </div>
     <div class="cob-box p3">
       <div class="cob-n" id="cob-p3">—</div>
-      <div class="cob-l">Con 3er teléfono</div>
+      <div class="cob-l">Con 3 teléfonos</div>
       <div class="cob-sub" id="cob-p3-pct">—% tiene 3er número</div>
     </div>
   </div>
   <div id="cob-alert-main"></div>
-  <div class="two" style="margin-top:14px;">
-    <div class="card">
-      <div class="ch"><span class="ct">Cobertura telefónica</span></div>
-      <div id="hbar-cobertura"></div>
-      <div id="cob-alert-tip"></div>
-    </div>
-    <div class="card">
-      <div class="ch"><span class="ct">No contactados — oportunidad de mejora</span></div>
-      <div id="hbar-nocontact"></div>
-      <div id="cob-alert-nocontact"></div>
-    </div>
+  <div class="card" style="margin-top:14px;">
+    <div class="ch"><span class="ct">Cobertura telefónica por tipo de registro</span></div>
+    <div id="hbar-cobertura"></div>
+    <div id="cob-alert-tip"></div>
   </div>
   <div class="card">
     <div class="ch"><span class="ct">Cobertura por jornada</span></div>
     <div class="tbl-wrap">
       <table class="tbl">
-        <thead><tr><th>Fecha</th><th>Total</th><th>Solo 1 tel.</th><th>Con tel. alt.</th><th>% cobertura alt.</th><th>No contestados</th></tr></thead>
+        <thead><tr><th>Fecha</th><th>Total pacientes</th><th>1 solo tel.</th><th>Con 2do tel.</th><th>Con 3er tel.</th><th>% con tel. alterno</th></tr></thead>
         <tbody id="tbl-cob"></tbody>
       </table>
     </div>
@@ -392,14 +385,6 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
   <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 9 JUNIO 2026</p>
-
-  <!-- KPIs globales -->
-  <div class="cum-kpi-row">
-    <div class="cum-kpi ok"><div class="cum-kpi-n">16</div><div class="cum-kpi-l">Días con base enviada</div></div>
-    <div class="cum-kpi bad"><div class="cum-kpi-n">13</div><div class="cum-kpi-l">Días sin base enviada</div></div>
-    <div class="cum-kpi warn"><div class="cum-kpi-n">43.3%</div><div class="cum-kpi-l">Tasa de incumplimiento global</div></div>
-    <div class="cum-kpi info"><div class="cum-kpi-n">29</div><div class="cum-kpi-l">Días hábiles transcurridos</div></div>
-  </div>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -468,16 +453,6 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     </div>
   </div>
 
-  <!-- Tabla detalle días perdidos -->
-  <div class="card">
-    <div class="ch"><span class="ct">Detalle — días sin envío de base</span><span class="csub">Ordenado cronológicamente</span></div>
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <thead><tr><th>#</th><th>Fecha</th><th>Día</th><th>Semana</th><th>Mes</th><th>Citas no confirmadas (est.)</th></tr></thead>
-        <tbody id="tbl-missing"></tbody>
-      </table>
-    </div>
-  </div>
 </div>
 
 </div>
@@ -849,51 +824,50 @@ function buildCobertura(){
   const lbl=days.length===1?DATA[days[0]].label+' 2026':DATA[days[0]].label+' – '+DATA[days[days.length-1]].label+' 2026';
   document.getElementById('lbl-cob').textContent='FUENTES Y COBERTURA TELEFÓNICA · '+lbl.toUpperCase();
 
+  // Todos los pacientes tienen teléfono principal.
+  // only1 = quienes tienen SOLO 1 tel (sin alternos)
+  // p2    = quienes tienen 2do teléfono registrado
+  // p3    = quienes tienen 3er teléfono registrado
+  // Validación: only1 + p2 debería ≈ total (p3 ⊆ p2)
   document.getElementById('cob-p1').textContent=fmt(v.only1);
-  document.getElementById('cob-p1-pct').textContent=pct(v.only1,v.total)+' solo un número';
+  document.getElementById('cob-p1-pct').textContent=pct(v.only1,v.total)+' sin número alterno';
   document.getElementById('cob-p2').textContent=fmt(v.p2);
-  document.getElementById('cob-p2-pct').textContent=pct(v.p2,v.total)+' tiene 2do número';
+  document.getElementById('cob-p2-pct').textContent=pct(v.p2,v.total)+' tienen 2do número';
   document.getElementById('cob-p3').textContent=fmt(v.p3);
-  document.getElementById('cob-p3-pct').textContent=pct(v.p3,v.total)+' tiene 3er número';
+  document.getElementById('cob-p3-pct').textContent=pct(v.p3,v.total)+' tienen 3er número';
 
-  const pctAlt=pctN(v.p2,v.total);
-  document.getElementById('cob-alert-main').innerHTML=`<div class="aa">⚠ <strong>Oportunidad:</strong> El ${pct(v.only1,v.total)} de pacientes (${fmt(v.only1)}) tienen un solo número registrado. Con un teléfono alternativo, se podría reintentar contacto en llamadas sin respuesta y aumentar el contact ratio.</div>`;
+  document.getElementById('cob-alert-main').innerHTML=`<div class="aa">⚠ <strong>Oportunidad:</strong> ${fmt(v.only1)} pacientes (${pct(v.only1,v.total)}) tienen registrado solo 1 teléfono. Si no contestan la llamada principal, no hay forma de reintentarlo. Registrar un número alterno en su ficha incrementaría el contact ratio significativamente.</div>`;
 
+  // Barras: sobre el total (todos tienen tel principal, es el 100%)
   document.getElementById('hbar-cobertura').innerHTML=[
-    {l:'Teléfono principal',val:v.total,col:'#0c41ab'},
-    {l:'Con tel. alternativo',val:v.p2,col:'#d4820a'},
-    {l:'Con 3er teléfono',val:v.p3,col:'#1a9e60'},
-  ].map(h=>`<div class="hbar"><div class="hbar-lbl">${h.l}</div><div class="hbar-track"><div class="hbar-fill" style="width:${pctN(h.val,v.total)}%;background:${h.col}"></div></div><div class="hbar-val">${fmt(h.val)} · ${pct(h.val,v.total)}</div></div>`).join('');
-  document.getElementById('cob-alert-tip').innerHTML=`<div class="ai" style="margin-top:8px;">💡 Incrementar el registro de números alternos puede llevar el contact ratio por encima del <strong>90%</strong>.</div>`;
+    {l:'Con 1 solo teléfono', val:v.only1, col:'#94a3b8', note:'Sin posibilidad de reintento'},
+    {l:'Con 2 teléfonos',     val:v.p2,    col:'#d4820a', note:'Reintento disponible'},
+    {l:'Con 3 teléfonos',     val:v.p3,    col:'#1a9e60', note:'Máxima cobertura'},
+  ].map(h=>`<div class="hbar">
+    <div class="hbar-lbl">${h.l}</div>
+    <div class="hbar-track"><div class="hbar-fill" style="width:${pctN(h.val,v.total)}%;background:${h.col}"></div></div>
+    <div class="hbar-val">${fmt(h.val)} · ${pct(h.val,v.total)}</div>
+  </div>`).join('');
+  document.getElementById('cob-alert-tip').innerHTML=`<div class="ai" style="margin-top:10px;">💡 <strong>Todos los ${fmt(v.total)} pacientes</strong> tienen al menos 1 teléfono registrado (teléfono principal). Incrementar el registro de 2do número puede llevar el contact ratio por encima del <strong>90%</strong>.</div>`;
 
-  const noContact=v.na+v.vm+v.busy+v.invalid+v.noring;
-  document.getElementById('hbar-nocontact').innerHTML=[
-    {l:'No contestó',val:v.na,col:'#d4820a'},
-    {l:'Buzón de voz',val:v.vm,col:'#6a3db8'},
-    {l:'Línea ocupada',val:v.busy,col:'#0891b2'},
-    {l:'Número inválido',val:v.invalid,col:'#c0392b'},
-    {l:'Sin tono',val:v.noring,col:'#64748b'},
-  ].map(h=>`<div class="hbar"><div class="hbar-lbl">${h.l}</div><div class="hbar-track"><div class="hbar-fill" style="width:${pctN(h.val,noContact)}%;background:${h.col}"></div></div><div class="hbar-val">${h.val} · ${pct(h.val,v.total)}</div></div>`).join('');
-  document.getElementById('cob-alert-nocontact').innerHTML=`<div class="ai" style="margin-top:8px;"><strong>${fmt(noContact)} pacientes</strong> no fueron alcanzados (${pct(noContact,v.total)}). Con número alterno se podría mejorar significativamente el contact ratio.</div>`;
-
+  // Tabla por jornada
   document.getElementById('tbl-cob').innerHTML=days.map(d=>{
     const dv=DATA[d];
-    const nc=dv.na+dv.vm+dv.busy+dv.invalid+dv.noring;
     return `<tr>
       <td><strong>${dv.label} 2026</strong></td>
       <td>${dv.total}</td>
       <td>${dv.only1} <span class="bdg b-gr">${pct(dv.only1,dv.total)}</span></td>
       <td>${dv.p2} <span class="bdg b-y">${pct(dv.p2,dv.total)}</span></td>
+      <td>${dv.p3} <span class="bdg b-g">${pct(dv.p3,dv.total)}</span></td>
       <td><span class="bdg ${pctN(dv.p2,dv.total)>=40?'b-g':'b-y'}">${pct(dv.p2,dv.total)}</span></td>
-      <td>${nc} <span class="bdg b-r">${pct(nc,dv.total)}</span></td>
     </tr>`;
   }).join('')+`<tr class="tot">
     <td><strong>TOTAL</strong></td>
     <td><strong>${fmt(days.reduce((a,d)=>a+DATA[d].total,0))}</strong></td>
     <td><strong>${fmt(v.only1)}</strong> (${pct(v.only1,v.total)})</td>
     <td><strong>${fmt(v.p2)}</strong> (${pct(v.p2,v.total)})</td>
+    <td><strong>${fmt(v.p3)}</strong> (${pct(v.p3,v.total)})</td>
     <td><strong>${pct(v.p2,v.total)}</strong></td>
-    <td><strong>${fmt(v.na+v.vm+v.busy+v.invalid+v.noring)}</strong></td>
   </tr>`;
 }
 
