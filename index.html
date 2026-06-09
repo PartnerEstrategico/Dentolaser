@@ -348,18 +348,24 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <!-- ══ COBERTURA ══ -->
 <div class="page" id="p-cobertura">
   <p class="lbl" id="lbl-cob">FUENTES Y COBERTURA TELEFÓNICA</p>
-  <div class="two" style="margin-bottom:14px;">
-    <div class="cob-box p1" style="text-align:center;padding:20px 24px;">
-      <div class="cob-n" id="cob-p1">—</div>
-      <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Sin número alterno</div>
-      <div class="cob-sub" id="cob-p1-pct" style="font-size:12px;margin-top:4px;">—</div>
-      <div style="font-size:11px;color:#991b1b;margin-top:8px;font-weight:600;">⚠ Sin segunda oportunidad de contacto</div>
+  <div class="three" style="margin-bottom:14px;">
+    <div class="cob-box p3" style="text-align:center;padding:20px 24px;">
+      <div class="cob-n" id="cob-p0">—</div>
+      <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Con teléfono principal</div>
+      <div class="cob-sub" style="font-size:12px;margin-top:4px;">100% · todos los pacientes</div>
+      <div style="font-size:11px;color:#065f46;margin-top:8px;font-weight:600;">✅ Base de contacto garantizada</div>
     </div>
     <div class="cob-box p2" style="text-align:center;padding:20px 24px;">
       <div class="cob-n" id="cob-p2">—</div>
       <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Con número alterno</div>
       <div class="cob-sub" id="cob-p2-pct" style="font-size:12px;margin-top:4px;">—</div>
       <div style="font-size:11px;color:#065f46;margin-top:8px;font-weight:600;" id="cob-p3-note">—</div>
+    </div>
+    <div class="cob-box p1" style="text-align:center;padding:20px 24px;border-color:#fca5a5;">
+      <div class="cob-n" id="cob-p1">—</div>
+      <div class="cob-l" style="font-size:13px;font-weight:700;margin-top:6px;">Sin número alterno</div>
+      <div class="cob-sub" id="cob-p1-pct" style="font-size:12px;margin-top:4px;">—</div>
+      <div style="font-size:11px;color:#991b1b;margin-top:8px;font-weight:600;">⚠ Sin segunda oportunidad de contacto</div>
     </div>
   </div>
   <div id="cob-alert-main"></div>
@@ -821,38 +827,48 @@ function buildCobertura(){
   const lbl=days.length===1?DATA[days[0]].label+' 2026':DATA[days[0]].label+' – '+DATA[days[days.length-1]].label+' 2026';
   document.getElementById('lbl-cob').textContent='FUENTES Y COBERTURA TELEFÓNICA · '+lbl.toUpperCase();
 
-  // only1 = pacientes sin ningún número alterno (solo teléfono principal)
-  // p2    = pacientes con al menos un 2do teléfono registrado
-  // p3    = pacientes con 3er teléfono (subconjunto de p2)
-  const conAlt=v.p2; // quienes tienen al menos 1 alterno
   const sinAlt=v.only1;
+  const conAlt=v.p2;
+  const crActual=pct(v.answered,v.total);
 
-  document.getElementById('cob-p1').textContent=fmt(sinAlt);
-  document.getElementById('cob-p1-pct').textContent=pct(sinAlt,v.total)+' del total · sin reintento posible';
+  // KPI: con teléfono principal (siempre = total)
+  document.getElementById('cob-p0').textContent=fmt(v.total);
+
+  // KPI: con alterno
   document.getElementById('cob-p2').textContent=fmt(conAlt);
   document.getElementById('cob-p2-pct').textContent=pct(conAlt,v.total)+' del total · reintento disponible';
   document.getElementById('cob-p3-note').textContent=
-    v.p3>0 ? `✅ De estos, ${v.p3} tienen incluso un 3er teléfono (${pct(v.p3,v.total)})` : '(ninguno con 3er teléfono)';
+    v.p3>0
+      ? `✅ De estos, ${v.p3} tienen incluso un 3er teléfono (${pct(v.p3,v.total)})`
+      : '(ninguno con 3er teléfono en este período)';
 
+  // KPI: sin alterno
+  document.getElementById('cob-p1').textContent=fmt(sinAlt);
+  document.getElementById('cob-p1-pct').textContent=pct(sinAlt,v.total)+' del total · sin reintento posible';
+
+  // Alerta principal — texto dinámico exacto
   document.getElementById('cob-alert-main').innerHTML=`<div class="ar" style="margin-top:0;">
-    🔴 <strong>${fmt(sinAlt)} pacientes (${pct(sinAlt,v.total)})</strong> tienen un solo teléfono registrado.
-    Si no contestan la llamada, <strong>no hay forma de reintentarlo</strong>.
+    🔴 <strong>${fmt(sinAlt)} pacientes (${pct(sinAlt,v.total)}) NO TIENEN un segundo teléfono.</strong>
+    Si en el teléfono principal no contestan la llamada, no hay forma de otra alternativa de contacto.
     Registrar un número alterno en su ficha permitiría una segunda oportunidad de confirmación y mejoraría el contact ratio.
   </div>`;
 
-  // Barras proporcionales al total
+  // Barras
   document.getElementById('hbar-cobertura').innerHTML=[
-    {l:'Sin número alterno',  val:sinAlt, col:'#94a3b8', sub:'Sin reintento posible'},
-    {l:'Con 2do teléfono',    val:v.p2,   col:'#d4820a', sub:'Reintento disponible'},
-    {l:'Con 3er teléfono',    val:v.p3,   col:'#1a9e60', sub:'Máxima cobertura'},
+    {l:'Sin número alterno', val:sinAlt, col:'#94a3b8'},
+    {l:'Con 2do teléfono',   val:v.p2,   col:'#d4820a'},
+    {l:'Con 3er teléfono',   val:v.p3,   col:'#1a9e60'},
   ].map(h=>`<div class="hbar">
     <div class="hbar-lbl">${h.l}</div>
     <div class="hbar-track"><div class="hbar-fill" style="width:${pctN(h.val,v.total)}%;background:${h.col}"></div></div>
     <div class="hbar-val">${fmt(h.val)} · ${pct(h.val,v.total)}</div>
   </div>`).join('');
 
+  // Tip dinámico — texto exacto solicitado
   document.getElementById('cob-alert-tip').innerHTML=`<div class="ai" style="margin-top:10px;">
-    💡 Si los <strong>${fmt(sinAlt)} pacientes sin alterno</strong> registraran un 2do número, el contact ratio potencial subiría de <strong>${pct(v.answered,v.total)}</strong> actual hacia <strong>>90%</strong>, asumiendo una tasa de respuesta similar en el reintento.
+    💡 Si los <strong>${fmt(sinAlt)} pacientes sin teléfono alterno</strong> registraran un 2do número,
+    el contact ratio potencial subiría de <strong>${crActual}</strong> actual hacia <strong>&gt;90%</strong>,
+    asumiendo una tasa de respuesta similar en el reintento.
   </div>`;
 
   // Tabla por jornada
