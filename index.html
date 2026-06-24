@@ -220,7 +220,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="604">4 jun 2026</option><option value="605">5 jun 2026</option>
       <option value="610">10 jun 2026</option><option value="611">11 jun 2026</option>
       <option value="617">17 jun 2026</option><option value="618">18 jun 2026</option>
-      <option value="619">19 jun 2026</option><option value="622" selected>22 jun 2026</option>
+      <option value="619">19 jun 2026</option><option value="622">22 jun 2026</option>
+      <option value="623" selected>23 jun 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -237,6 +238,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="610">10 jun 2026</option><option value="611">11 jun 2026</option>
       <option value="617">17 jun 2026</option><option value="618">18 jun 2026</option>
       <option value="619">19 jun 2026</option><option value="622">22 jun 2026</option>
+      <option value="623">23 jun 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -250,7 +252,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="604">4 jun 2026</option><option value="605">5 jun 2026</option>
       <option value="610">10 jun 2026</option><option value="611">11 jun 2026</option>
       <option value="617">17 jun 2026</option><option value="618">18 jun 2026</option>
-      <option value="619">19 jun 2026</option><option value="622" selected>22 jun 2026</option>
+      <option value="619">19 jun 2026</option><option value="622">22 jun 2026</option>
+      <option value="623" selected>23 jun 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -396,7 +399,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
-  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 22 JUNIO 2026</p>
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 23 JUNIO 2026</p>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -540,11 +543,14 @@ const DATA = {
   '622':{label:'22 jun',total:106,answered:83, vm:9, na:13,busy:0,invalid:1,noring:0,will:56,wont:2, ignored:25,dur:[5,2,48,28], p1:106,p2:41,p3:7, only1:65,
     doc:{smb:37,jdcp:0,dcce:0,jcpg:0,mb:0,rm:0,mra:26,other:43},
     act:{'Entrega Prótesis':27,'Imp. Preliminar':22,'P. Enfilado':15,'Valoración':14,'Control':11,'P. Rodete':10,'Imp. Definitiva':7}},
+  '623':{label:'23 jun',total:112,answered:91, vm:9, na:12,busy:0,invalid:0,noring:0,will:66,wont:2, ignored:23,dur:[3,3,63,22], p1:112,p2:39,p3:8, only1:73,
+    doc:{smb:26,jdcp:0,dcce:0,jcpg:27,mb:0,rm:27,mra:15,other:17},
+    act:{'P. Enfilado':21,'P. Rodete':21,'Valoración':19,'Imp. Preliminar':15,'Imp. Definitiva':14,'Entrega Prótesis':14,'Control':7}},
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
-const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622'];
+const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','other'];
@@ -931,12 +937,12 @@ const MONTHS_CUM = {
     missing_days:['Jue 7','Sáb 9','Lun 11','Jue 14','Sáb 16','Jue 21','Sáb 23','Lun 25','Mar 26','Vie 29','Sáb 30']
   },
   junio: {
-    label:'Junio 2026 (al 22 jun)', habil:16, sent:10, missing:6,
+    label:'Junio 2026 (al 23 jun)', habil:17, sent:11, missing:6,
     color:'#1a5c3a', colorBg:'#d1fae5',
     missing_days:['Lun 1','Sáb 6','Mar 9','Vie 12','Sáb 13','Mar 16','Sáb 20']
   },
   total: {
-    label:'Acumulado', habil:39, sent:22, missing:17,
+    label:'Acumulado', habil:40, sent:23, missing:17,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -964,8 +970,8 @@ const WEEKS = [
   {label:'Sem 16–20 Jun', sent:3,total:5, days:[
     {d:'Mar 16',s:'missing'},{d:'Mié 17',s:'ok'},{d:'Jue 18',s:'ok'},
     {d:'Vie 19',s:'ok'},{d:'Sáb 20',s:'missing'}]},
-  {label:'Sem 22 Jun',   sent:1,total:1, days:[
-    {d:'Lun 22',s:'ok'}]},
+  {label:'Sem 22–23 Jun', sent:2,total:2, days:[
+    {d:'Lun 22',s:'ok'},{d:'Mar 23',s:'ok'}]},
 ];
 
 const MISSING_DAYS = [
@@ -992,7 +998,7 @@ const MISSING_DAYS = [
 // Lun=0 Mar=1 Mié=2 Jue=3 Vie=4 Sáb=5
 const DOW_STATS = [
   {n:'Lunes',      total:6, sent:3},
-  {n:'Martes',     total:8, sent:5},
+  {n:'Martes',     total:9, sent:6},
   {n:'Miércoles',  total:8, sent:8},
   {n:'Jueves',     total:7, sent:4},
   {n:'Viernes',    total:7, sent:4},
