@@ -203,7 +203,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <select class="fsel" id="periodo-sel" onchange="onPeriodo()">
     <option value="mayo">Mayo 2026 (12 días)</option>
     <option value="junio">Junio 2026 (13 días)</option>
-    <option value="julio">Julio 2026 (11 días)</option>
+    <option value="julio">Julio 2026 (13 días)</option>
     <option value="todos">Todos los períodos</option>
     <option value="fecha" selected>Fecha específica</option>
     <option value="rango">Rango personalizado</option>
@@ -230,7 +230,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="709">9 jul 2026</option><option value="710">10 jul 2026</option>
       <option value="715">15 jul 2026</option><option value="716">16 jul 2026</option>
       <option value="717">17 jul 2026</option>
-      <option value="723" selected>23 jul 2026</option>
+      <option value="723">23 jul 2026</option>
+      <option value="724">24 jul 2026</option><option value="727" selected>27 jul 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -256,6 +257,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="715">15 jul 2026</option><option value="716">16 jul 2026</option>
       <option value="717">17 jul 2026</option>
       <option value="723">23 jul 2026</option>
+      <option value="724">24 jul 2026</option><option value="727">27 jul 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -278,7 +280,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="709">9 jul 2026</option><option value="710">10 jul 2026</option>
       <option value="715">15 jul 2026</option><option value="716">16 jul 2026</option>
       <option value="717">17 jul 2026</option>
-      <option value="723" selected>23 jul 2026</option>
+      <option value="723">23 jul 2026</option>
+      <option value="724">24 jul 2026</option><option value="727" selected>27 jul 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -424,7 +427,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
-  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 23 JULIO 2026</p>
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 27 JULIO 2026</p>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -452,7 +455,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <div class="cum-month-card">
       <div class="cmh" style="background:#6a3db8;">
         <span class="cmh-title">Julio 2026</span>
-        <span class="cmh-sub">Mié 1 jul → Jue 23 jul</span>
+        <span class="cmh-sub">Mié 1 jul → Lun 27 jul</span>
       </div>
       <div class="cmb">
         <div class="cm-ring-wrap"><canvas id="ring-julio" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-julio-lbl"></div></div>
@@ -462,7 +465,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <div class="cum-month-card" style="border-color:#d4820a;">
       <div class="cmh" style="background:#7a4800;">
         <span class="cmh-title">Acumulado</span>
-        <span class="cmh-sub">4 may → 23 jul 2026</span>
+        <span class="cmh-sub">4 may → 27 jul 2026</span>
       </div>
       <div class="cmb">
         <div class="cm-ring-wrap"><canvas id="ring-total" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-total-lbl"></div></div>
@@ -620,12 +623,18 @@ const DATA = {
   '723':{label:'23 jul',total:87, answered:70, vm:8, na:8, busy:0,invalid:1,noring:0,will:40,wont:1, ignored:29,dur:[8,3,48,11], p1:87, p2:22,p3:3, only1:65,
     doc:{smb:11,jdcp:0,dcce:0,jcpg:22,mb:19,rm:25,mra:0,other:10},
     act:{'P. Rodete':23,'P. Enfilado':14,'Entrega Prótesis':14,'Control':12,'Valoración':8,'Imp. Definitiva':8,'Imp. Preliminar':8}},
+  '724':{label:'24 jul',total:61, answered:53, vm:5, na:3, busy:0,invalid:0,noring:0,will:37,wont:2, ignored:14,dur:[2,1,39,11], p1:61, p2:25,p3:2, only1:36,
+    doc:{smb:0,jdcp:22,dcce:14,jcpg:25,mb:0,rm:0,mra:0,other:0},
+    act:{'P. Enfilado':18,'Entrega Prótesis':16,'P. Rodete':11,'Imp. Definitiva':7,'Control':4,'Imp. Preliminar':3,'Valoración':2}},
+  '727':{label:'27 jul',total:101,answered:86, vm:5, na:8, busy:0,invalid:2,noring:0,will:60,wont:3, ignored:23,dur:[2,6,50,28], p1:101,p2:36,p3:5, only1:65,
+    doc:{smb:25,jdcp:15,dcce:0,jcpg:0,mb:0,rm:0,mra:26,other:35},
+    act:{'P. Enfilado':23,'Entrega Prótesis':21,'P. Rodete':20,'Control':14,'Imp. Definitiva':9,'Imp. Preliminar':8,'Valoración':6}},
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
 const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623','626','630'];
-const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723'];
+const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723','724','727'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','other'];
@@ -1018,12 +1027,12 @@ const MONTHS_CUM = {
     missing_days:['Lun 1','Sáb 6','Mar 9','Vie 12','Sáb 13','Mar 16','Sáb 20','Mié 24','Jue 25','Sáb 27','Lun 29']
   },
   julio: {
-    label:'Julio 2026 (al 23 jul)', habil:20, sent:11, missing:9,
+    label:'Julio 2026 (al 27 jul)', habil:23, sent:13, missing:10,
     color:'#6a3db8', colorBg:'#ede9fe',
-    missing_days:['Jue 2','Sáb 4','Sáb 11','Lun 13','Mar 14','Sáb 18','Lun 20','Mar 21','Mié 22']
+    missing_days:['Jue 2','Sáb 4','Sáb 11','Lun 13','Mar 14','Sáb 18','Lun 20','Mar 21','Mié 22','Sáb 25']
   },
   total: {
-    label:'Acumulado', habil:66, sent:37, missing:29,
+    label:'Acumulado', habil:69, sent:39, missing:30,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -1063,8 +1072,11 @@ const WEEKS = [
   {label:'Sem 13–18 Jul', sent:3,total:6, days:[
     {d:'Lun 13',s:'missing'},{d:'Mar 14',s:'missing'},{d:'Mié 15',s:'ok'},
     {d:'Jue 16',s:'ok'},{d:'Vie 17',s:'ok'},{d:'Sáb 18',s:'missing'}]},
-  {label:'Sem 20–23 Jul', sent:1,total:4, days:[
-    {d:'Lun 20',s:'missing'},{d:'Mar 21',s:'missing'},{d:'Mié 22',s:'missing'},{d:'Jue 23',s:'ok'}]},
+  {label:'Sem 20–25 Jul', sent:2,total:6, days:[
+    {d:'Lun 20',s:'missing'},{d:'Mar 21',s:'missing'},{d:'Mié 22',s:'missing'},
+    {d:'Jue 23',s:'ok'},{d:'Vie 24',s:'ok'},{d:'Sáb 25',s:'missing'}]},
+  {label:'Sem 27 Jul',   sent:1,total:1, days:[
+    {d:'Lun 27',s:'ok'}]},
 ];
 
 const MISSING_DAYS = [
@@ -1098,17 +1110,18 @@ const MISSING_DAYS = [
   {d:'Sáb 18 Jul',dow:'Sábado',  mes:'Julio', wk:'13–18 Jul'},
   {d:'Lun 20 Jul',dow:'Lunes',   mes:'Julio', wk:'20–23 Jul'},
   {d:'Mar 21 Jul',dow:'Martes',  mes:'Julio', wk:'20–23 Jul'},
-  {d:'Mié 22 Jul',dow:'Miércoles',mes:'Julio',wk:'20–23 Jul'},
+  {d:'Mié 22 Jul',dow:'Miércoles',mes:'Julio',wk:'20–25 Jul'},
+  {d:'Sáb 25 Jul',dow:'Sábado',  mes:'Julio', wk:'20–25 Jul'},
 ];
 
 // Lun=0 Mar=1 Mié=2 Jue=3 Vie=4 Sáb=5
 const DOW_STATS = [
-  {n:'Lunes',      total:10,sent:4},
+  {n:'Lunes',      total:11,sent:5},
   {n:'Martes',     total:13,sent:8},
   {n:'Miércoles',  total:13,sent:11},
   {n:'Jueves',     total:12,sent:7},
-  {n:'Viernes',    total:11,sent:8},
-  {n:'Sábado',     total:12,sent:0},
+  {n:'Viernes',    total:12,sent:9},
+  {n:'Sábado',     total:13,sent:0},
 ];
 
 let cCumBar=null, cRingMayo=null, cRingJunio=null, cRingJulio=null, cRingTotal=null;
