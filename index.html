@@ -234,7 +234,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="723">23 jul 2026</option>
       <option value="724">24 jul 2026</option><option value="727">27 jul 2026</option>
       <option value="729">29 jul 2026</option><option value="730">30 jul 2026</option>
-      <option value="731">31 jul 2026</option><option value="803" selected>3 ago 2026</option>
+      <option value="731">31 jul 2026</option><option value="803">3 ago 2026</option><option value="804">4 ago 2026</option><option value="805">5 ago 2026</option><option value="806" selected>6 ago 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -262,7 +262,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="723">23 jul 2026</option>
       <option value="724">24 jul 2026</option><option value="727">27 jul 2026</option>
       <option value="729">29 jul 2026</option><option value="730">30 jul 2026</option>
-      <option value="731">31 jul 2026</option><option value="803">3 ago 2026</option>
+      <option value="731">31 jul 2026</option><option value="803">3 ago 2026</option><option value="804">4 ago 2026</option><option value="805">5 ago 2026</option><option value="806">6 ago 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -288,7 +288,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <option value="723">23 jul 2026</option>
       <option value="724">24 jul 2026</option><option value="727">27 jul 2026</option>
       <option value="729">29 jul 2026</option><option value="730">30 jul 2026</option>
-      <option value="731">31 jul 2026</option><option value="803" selected>3 ago 2026</option>
+      <option value="731">31 jul 2026</option><option value="803">3 ago 2026</option><option value="804">4 ago 2026</option><option value="805">5 ago 2026</option><option value="806" selected>6 ago 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -658,13 +658,37 @@ const DATA = {
   '803':{label:'3 ago', total:61, answered:47, vm:4, na:10,busy:0,invalid:0,noring:0,will:30,wont:2, ignored:15,dur:[3,5,23,16], p1:61, p2:29,p3:8, only1:32,
     doc:{smb:29,jdcp:13,dcce:0,jcpg:0,mb:0,rm:0,mra:0,other:19},
     act:{'P. Rodete':20,'P. Enfilado':13,'Control':11,'Valoración':6,'Entrega Prótesis':5,'Imp. Definitiva':4,'Imp. Preliminar':2}},
+  '804':{
+    label:'4 ago',total:62,answered:55,vm:3,na:4,busy:0,invalid:0,noring:0,
+    will:35,wont:3,ignored:17,
+    dur:[2,4,38,11],
+    p1:62,p2:24,p3:9,only1:38,
+    doc:{smb:26,jdcp:0,dcce:0,jcpg:0,mb:0,rm:27,mra:0,other:9},
+    act:{'Entrega Prótesis':15,'Imp. Preliminar':3,'P. Enfilado':15,'P. Rodete':15,'Valoración':3,'Imp. Definitiva':6,'Control':5}
+  },
+  '805':{
+    label:'5 ago',total:64,answered:51,vm:9,na:4,busy:0,invalid:0,noring:0,
+    will:34,wont:1,ignored:16,
+    dur:[4,2,38,7],
+    p1:64,p2:25,p3:5,only1:39,
+    doc:{smb:27,jdcp:0,dcce:0,jcpg:0,mb:0,rm:26,mra:0,other:11},
+    act:{'P. Enfilado':20,'P. Rodete':15,'Entrega Prótesis':12,'Imp. Definitiva':9,'Control':6,'Imp. Preliminar':2}
+  },
+  '806':{
+    label:'6 ago',total:94,answered:77,vm:8,na:9,busy:0,invalid:0,noring:0,
+    will:49,wont:3,ignored:25,
+    dur:[2,6,54,15],
+    p1:94,p2:46,p3:3,only1:48,
+    doc:{smb:16,jdcp:0,dcce:0,jcpg:23,mb:22,rm:25,mra:0,other:8},
+    act:{'P. Rodete':27,'Control':16,'Imp. Definitiva':16,'P. Enfilado':14,'Entrega Prótesis':12,'Valoración':6,'Imp. Preliminar':3}
+  },
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
 const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623','626','630'];
 const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731'];
-const AGOSTO_DAYS=['803'];
+const AGOSTO_DAYS=['803','804','805','806'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','other'];
@@ -1063,12 +1087,12 @@ const MONTHS_CUM = {
     missing_days:['Jue 2','Sáb 4','Sáb 11','Lun 13','Mar 14','Sáb 18','Lun 20','Mar 21','Mié 22','Sáb 25','Mar 28','Sáb 1 ago']
   },
   agosto: {
-    label:'Agosto 2026 (al 3 ago)', habil:2, sent:1, missing:1,
+    label:'Agosto 2026 (al 6 ago)', habil:4, sent:4, missing:0,
     color:'#0891b2', colorBg:'#cffafe',
-    missing_days:['Sáb 1']
+    missing_days:[]
   },
   total: {
-    label:'Acumulado', habil:75, sent:43, missing:32,
+    label:'Acumulado', habil:77, sent:46, missing:31,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -1114,8 +1138,8 @@ const WEEKS = [
   {label:'Sem 27 Jul–1 Ago', sent:4,total:6, days:[
     {d:'Lun 27',s:'ok'},{d:'Mar 28',s:'missing'},{d:'Mié 29',s:'ok'},
     {d:'Jue 30',s:'ok'},{d:'Vie 31',s:'ok'},{d:'Sáb 1 Ago',s:'missing'}]},
-  {label:'Sem 3 Ago',        sent:1,total:1, days:[
-    {d:'Lun 3 Ago',s:'ok'}]},
+  {label:'Sem 3 Ago',        sent:4,total:4, days:[
+    {d:'Lun 3 Ago',s:'ok'},{d:'Mar 4 Ago',s:'ok'},{d:'Mié 5 Ago',s:'ok'},{d:'Jue 6 Ago',s:'ok'}]},
 ];
 
 const MISSING_DAYS = [
@@ -1158,9 +1182,9 @@ const MISSING_DAYS = [
 // Lun=0 Mar=1 Mié=2 Jue=3 Vie=4 Sáb=5
 const DOW_STATS = [
   {n:'Lunes',      total:12,sent:6},
-  {n:'Martes',     total:14,sent:8},
-  {n:'Miércoles',  total:14,sent:12},
-  {n:'Jueves',     total:13,sent:8},
+  {n:'Martes',     total:15,sent:9},
+  {n:'Miércoles',  total:15,sent:13},
+  {n:'Jueves',     total:14,sent:9},
   {n:'Viernes',    total:13,sent:10},
   {n:'Sábado',     total:14,sent:0},
 ];
