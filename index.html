@@ -206,7 +206,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <option value="julio">Julio 2026 (16 días)</option>
     <option value="agosto">Agosto 2026 (1 día)</option>
               <option value="septiembre">Septiembre 2026 (20 días)</option>
-    <option value="octubre">Octubre 2026 (9 días)</option>
+    <option value="octubre">Octubre 2026 (11 días)</option>
     <option value="todos">Todos los períodos</option>
     <option value="fecha" selected>Fecha específica</option>
     <option value="rango">Rango personalizado</option>
@@ -255,7 +255,9 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1016">16 oct 2026</option>
 <option value="1019">19 oct 2026</option>
 <option value="1020">20 oct 2026</option>
-<option value="1021" selected>21 oct 2026</option>
+<option value="1021">21 oct 2026</option>
+<option value="1022">22 oct 2026</option>
+<option value="1023" selected>23 oct 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -303,6 +305,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1019">19 oct 2026</option>
 <option value="1020">20 oct 2026</option>
 <option value="1021">21 oct 2026</option>
+<option value="1022">22 oct 2026</option>
+<option value="1023">23 oct 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -347,7 +351,9 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1016">16 oct 2026</option>
 <option value="1019">19 oct 2026</option>
 <option value="1020">20 oct 2026</option>
-<option value="1021" selected>21 oct 2026</option>
+<option value="1021">21 oct 2026</option>
+<option value="1022">22 oct 2026</option>
+<option value="1023" selected>23 oct 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -493,7 +499,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
-  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 21 OCTUBRE 2026</p>
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 23 OCTUBRE 2026</p>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -574,10 +580,10 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <div class="card hl-r">
     <div class="ch"><span class="ct">⚠ Alerta gerencial</span><span class="bdg b-r">32 días sin envío</span></div>
     <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">
-      De <strong>130 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>98</strong>.
-      El <strong>24.6%</strong> de los días laborables no se confirmaron citas.
+      De <strong>132 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>100</strong>.
+      El <strong>24.2%</strong> de los días laborables no se confirmaron citas.
     </p>
-    <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 20). <strong>Lunes y jueves</strong> presentan el mayor incumplimiento en días hábiles. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas. Octubre arrancó con huecos: <strong>2, 3, 5, 8, 9, 10, 13 y 17 de octubre</strong> sin base (8 de 17 días hábiles).</div>
+    <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 20). <strong>Lunes y jueves</strong> presentan el mayor incumplimiento en días hábiles. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas. Octubre arrancó con huecos: <strong>2, 3, 5, 8, 9, 10, 13 y 17 de octubre</strong> sin base (8 de 19 días hábiles).</div>
     <div class="aa" style="margin-top:8px;">💰 <strong>Impacto estimado:</strong> ~2.880 citas (32 días × 90 promedio) no recibieron llamada de confirmación automatizada. Con un contact ratio del 80%, aproximadamente <strong>2.304 pacientes</strong> no fueron contactados.</div>
   </div>
 
@@ -1097,15 +1103,31 @@ const DATA = {
     doc:{smb:38,jdcp:0,dcce:14,jcpg:0,mb:0,rm:28,mra:16,yetm:0,cvb:0,jec:0,mido:24,yimo:0,other:0},
     act:{'P. Rodete':33,'P. Enfilado':24,'Entrega Prótesis':17,'Control':17,'Imp. Definitiva':11,'Imp. Preliminar':11,'Valoración':7}
   },
+  '1022':{
+    label:'22 oct',total:131,answered:98,vm:12,na:19,busy:1,invalid:1,noring:0,
+    will:57,wont:8,ignored:33,
+    dur:[5,8,58,27],
+    p1:131,p2:50,p3:12,only1:81,
+    doc:{smb:43,jdcp:0,dcce:0,jcpg:20,mb:20,rm:36,mra:0,yetm:0,cvb:12,jec:0,mido:0,yimo:0,other:0},
+    act:{'P. Enfilado':35,'P. Rodete':30,'Entrega Prótesis':18,'Imp. Definitiva':17,'Control':12,'Valoración':10,'Imp. Preliminar':9}
+  },
+  '1023':{
+    label:'23 oct',total:108,answered:73,vm:11,na:19,busy:0,invalid:5,noring:0,
+    will:48,wont:4,ignored:21,
+    dur:[5,2,54,12],
+    p1:108,p2:32,p3:2,only1:76,
+    doc:{smb:28,jdcp:24,dcce:11,jcpg:19,mb:9,rm:17,mra:0,yetm:0,cvb:0,jec:0,mido:0,yimo:0,other:0},
+    act:{'Entrega Prótesis':31,'P. Enfilado':30,'P. Rodete':17,'Imp. Definitiva':12,'Imp. Preliminar':7,'Valoración':6,'Control':5}
+  },
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
 const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623','626','630'];
 const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731'];
 const AGOSTO_DAYS=['803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831'];
 const SEPTIEMBRE_DAYS=['901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930'];
-const OCTUBRE_DAYS=['1001','1006','1007','1014','1015','1016','1019','1020','1021'];
+const OCTUBRE_DAYS=['1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','yetm','cvb','jec','mido','yimo','other'];
@@ -1521,12 +1543,12 @@ const MONTHS_CUM = {
     missing_days:['Jue 10 Sep','Sáb 12 Sep','Lun 21 Sep','Sáb 26 Sep']
   },
   octubre: {
-    label:'Octubre 2026 (al 21 oct)', habil:17, sent:9, missing:8,
+    label:'Octubre 2026 (al 23 oct)', habil:19, sent:11, missing:8,
     color:'#9d174d', colorBg:'#fce7f3',
     missing_days:['Vie 2 Oct','Sáb 3 Oct','Lun 5 Oct','Jue 8 Oct','Vie 9 Oct','Sáb 10 Oct','Mar 13 Oct','Sáb 17 Oct']
   },
   total: {
-    label:'Acumulado', habil:130, sent:98, missing:32,
+    label:'Acumulado', habil:132, sent:100, missing:32,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -1596,8 +1618,8 @@ const WEEKS = [
     {d:'Lun 5 Oct',s:'missing'},{d:'Mar 6 Oct',s:'ok'},{d:'Mié 7 Oct',s:'ok'},{d:'Jue 8 Oct',s:'missing'},{d:'Vie 9 Oct',s:'missing'},{d:'Sáb 10 Oct',s:'missing'}]},
   {label:'Sem 13 Oct', sent:3,total:5, days:[
     {d:'Mar 13 Oct',s:'missing'},{d:'Mié 14 Oct',s:'ok'},{d:'Jue 15 Oct',s:'ok'},{d:'Vie 16 Oct',s:'ok'},{d:'Sáb 17 Oct',s:'missing'}]},
-  {label:'Sem 19 Oct', sent:3,total:6, days:[
-    {d:'Lun 19 Oct',s:'ok'},{d:'Mar 20 Oct',s:'ok'},{d:'Mié 21 Oct',s:'ok'},{d:'Jue 22 Oct',s:'missing'},{d:'Vie 23 Oct',s:'missing'},{d:'Sáb 24 Oct',s:'missing'}]},
+  {label:'Sem 19 Oct', sent:5,total:6, days:[
+    {d:'Lun 19 Oct',s:'ok'},{d:'Mar 20 Oct',s:'ok'},{d:'Mié 21 Oct',s:'ok'},{d:'Jue 22 Oct',s:'ok'},{d:'Vie 23 Oct',s:'ok'},{d:'Sáb 24 Oct',s:'missing'}]},
 ];
 
 const MISSING_DAYS = [
@@ -1645,8 +1667,8 @@ const DOW_STATS = [
   {n:'Lunes',      total:22,sent:12},
   {n:'Martes',     total:27,sent:21},
   {n:'Miércoles',  total:26,sent:25},
-  {n:'Jueves',     total:24,sent:17},
-  {n:'Viernes',    total:23,sent:19},
+  {n:'Jueves',     total:25,sent:18},
+  {n:'Viernes',    total:24,sent:20},
   {n:'Sábado',     total:23,sent:0},
 ];
 
