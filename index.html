@@ -207,7 +207,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <option value="agosto">Agosto 2026 (1 día)</option>
               <option value="septiembre">Septiembre 2026 (20 días)</option>
     <option value="octubre">Octubre 2026 (15 días)</option>
-    <option value="noviembre">Noviembre 2026 (5 días)</option>
+    <option value="noviembre">Noviembre 2026 (8 días)</option>
     <option value="todos">Todos los períodos</option>
     <option value="fecha" selected>Fecha específica</option>
     <option value="rango">Rango personalizado</option>
@@ -267,7 +267,10 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1105">5 nov 2026</option>
 <option value="1106">6 nov 2026</option>
 <option value="1109">9 nov 2026</option>
-<option value="1111" selected>11 nov 2026</option>
+<option value="1111">11 nov 2026</option>
+<option value="1112">12 nov 2026</option>
+<option value="1113">13 nov 2026</option>
+<option value="1117" selected>17 nov 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -326,6 +329,9 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1106">6 nov 2026</option>
 <option value="1109">9 nov 2026</option>
 <option value="1111">11 nov 2026</option>
+<option value="1112">12 nov 2026</option>
+<option value="1113">13 nov 2026</option>
+<option value="1117">17 nov 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -381,7 +387,10 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1105">5 nov 2026</option>
 <option value="1106">6 nov 2026</option>
 <option value="1109">9 nov 2026</option>
-<option value="1111" selected>11 nov 2026</option>
+<option value="1111">11 nov 2026</option>
+<option value="1112">12 nov 2026</option>
+<option value="1113">13 nov 2026</option>
+<option value="1117" selected>17 nov 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -527,7 +536,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
-  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 11 NOVIEMBRE 2026</p>
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 17 NOVIEMBRE 2026</p>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -605,7 +614,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <div class="cum-month-card" style="border-color:#d4820a;">
       <div class="cmh" style="background:#7a4800;">
         <span class="cmh-title">Acumulado</span>
-        <span class="cmh-sub">4 may → 11 nov 2026</span>
+        <span class="cmh-sub">4 may → 17 nov 2026</span>
       </div>
       <div class="cmb">
         <div class="cm-ring-wrap"><canvas id="ring-total" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-total-lbl"></div></div>
@@ -616,13 +625,13 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
   <!-- Alerta gerencial -->
   <div class="card hl-r">
-    <div class="ch"><span class="ct">⚠ Alerta gerencial</span><span class="bdg b-r">38 días sin envío</span></div>
+    <div class="ch"><span class="ct">⚠ Alerta gerencial</span><span class="bdg b-r">39 días sin envío</span></div>
     <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">
-      De <strong>147 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>109</strong>.
-      El <strong>25.9%</strong> de los días laborables no se confirmaron citas.
+      De <strong>151 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>112</strong>.
+      El <strong>25.8%</strong> de los días laborables no se confirmaron citas.
     </p>
-    <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 20). <strong>Lunes y jueves</strong> presentan el mayor incumplimiento en días hábiles. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas. Octubre cerró con <strong>11 de 26 días hábiles sin base</strong> (2, 3, 5, 8, 9, 10, 13, 17, 24, 27 y 31 de octubre). En noviembre van sin base el <strong>3, 7 y 10 de noviembre</strong>.</div>
-    <div class="aa" style="margin-top:8px;">💰 <strong>Impacto estimado:</strong> ~3.420 citas (38 días × 90 promedio) no recibieron llamada de confirmación automatizada. Con un contact ratio del 80%, aproximadamente <strong>2.736 pacientes</strong> no fueron contactados.</div>
+    <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 20). <strong>Lunes y jueves</strong> presentan el mayor incumplimiento en días hábiles. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas. Octubre cerró con <strong>11 de 26 días hábiles sin base</strong> (2, 3, 5, 8, 9, 10, 13, 17, 24, 27 y 31 de octubre). En noviembre van sin base el <strong>3, 7, 10 y 14 de noviembre</strong>.</div>
+    <div class="aa" style="margin-top:8px;">💰 <strong>Impacto estimado:</strong> ~3.510 citas (39 días × 90 promedio) no recibieron llamada de confirmación automatizada. Con un contact ratio del 80%, aproximadamente <strong>2.808 pacientes</strong> no fueron contactados.</div>
   </div>
 
   <!-- Calendario semanal -->
@@ -1229,24 +1238,48 @@ const DATA = {
     doc:{smb:11,jdcp:0,dcce:10,jcpg:0,mb:0,rm:23,mra:0,yetm:0,cvb:10,jec:6,mido:10,yimo:0,other:0},
     act:{'Entrega Prótesis':14,'Valoración':13,'P. Enfilado':11,'Imp. Preliminar':9,'Control':9,'P. Rodete':9,'Imp. Definitiva':4,'Rebases':1}
   },
+  '1112':{
+    label:'12 nov',total:76,answered:58,vm:8,na:10,busy:0,invalid:0,noring:0,
+    will:34,wont:3,ignored:21,
+    dur:[4,3,45,6],
+    p1:76,p2:30,p3:3,only1:46,
+    doc:{smb:15,jdcp:0,dcce:0,jcpg:22,mb:21,rm:18,mra:0,yetm:0,cvb:0,jec:0,mido:0,yimo:0,other:0},
+    act:{'P. Enfilado':16,'Valoración':13,'Entrega Prótesis':13,'P. Rodete':12,'Control':9,'Imp. Definitiva':7,'Imp. Preliminar':6}
+  },
+  '1113':{
+    label:'13 nov',total:64,answered:53,vm:4,na:3,busy:4,invalid:0,noring:0,
+    will:40,wont:2,ignored:11,
+    dur:[3,2,40,8],
+    p1:64,p2:20,p3:1,only1:44,
+    doc:{smb:6,jdcp:0,dcce:10,jcpg:23,mb:7,rm:18,mra:0,yetm:0,cvb:0,jec:0,mido:0,yimo:0,other:0},
+    act:{'Entrega Prótesis':24,'Valoración':12,'P. Enfilado':10,'P. Rodete':9,'Imp. Preliminar':4,'Control':4,'Imp. Definitiva':1}
+  },
+  '1117':{
+    label:'17 nov',total:108,answered:88,vm:5,na:15,busy:0,invalid:0,noring:0,
+    will:74,wont:1,ignored:13,
+    dur:[2,1,61,24],
+    p1:108,p2:42,p3:6,only1:66,
+    doc:{smb:27,jdcp:0,dcce:0,jcpg:24,mb:0,rm:21,mra:23,yetm:13,cvb:0,jec:0,mido:0,yimo:0,other:0},
+    act:{'Valoración':20,'P. Enfilado':19,'Imp. Preliminar':16,'Entrega Prótesis':15,'Control':15,'P. Rodete':11,'Imp. Definitiva':6,'Entrega de Placa':4,'Raspaje y Alisado':1,'Rebases':1}
+  },
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030','1104','1105','1106','1109','1111'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030','1104','1105','1106','1109','1111','1112','1113','1117'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
 const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623','626','630'];
 const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731'];
 const AGOSTO_DAYS=['803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831'];
 const SEPTIEMBRE_DAYS=['901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930'];
 const OCTUBRE_DAYS=['1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030'];
-const NOVIEMBRE_DAYS=['1104','1105','1106','1109','1111'];
+const NOVIEMBRE_DAYS=['1104','1105','1106','1109','1111','1112','1113','1117'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','yetm','cvb','jec','mido','yimo','other'];
 const DOC_NAMES =['Sandra M. Bolaños','José D. Castro P.','Diana C. Castro E.','Julio C. Páez G.','Marcelo Benjumea','Rafael Mantilla','Melissa Ríos A.','Yamel E. Tilaguy M.','Carolina Vallejo B.','Juan Elías Cabarcas','María I. Dávila O.','Yiseth I. Miranda O.','Otros/Visitantes'];
 const DOC_COLORS=['#0c41ab','#e07b00','#1a9e60','#8b1fbc','#c0392b','#0891b2','#d97706','#be185d','#65a30d','#0369a1','#ca8a04','#4f46e5','#94a3b8'];
 
-const ACT_ORDER=['Valoración','Entrega Prótesis','Imp. Preliminar','P. Enfilado','P. Rodete','Imp. Definitiva','Control','Placa Neuromiorelajante','Resina','Rebases'];
-const ACT_COLORS=['#0c41ab','#1a9e60','#2e63cd','#8b1fbc','#0891b2','#d97706','#94a3b8','#be123c','#a16207','#4d7c0f'];
+const ACT_ORDER=['Valoración','Entrega Prótesis','Imp. Preliminar','P. Enfilado','P. Rodete','Imp. Definitiva','Control','Placa Neuromiorelajante','Resina','Rebases','Entrega de Placa','Raspaje y Alisado'];
+const ACT_COLORS=['#0c41ab','#1a9e60','#2e63cd','#8b1fbc','#0891b2','#d97706','#94a3b8','#be123c','#a16207','#4d7c0f','#c2410c','#0f766e'];
 
 const fmt=n=>Number(n).toLocaleString('es-CO');
 const pct=(a,b)=>b?((a/b)*100).toFixed(1)+'%':'0.0%';
@@ -1660,12 +1693,12 @@ const MONTHS_CUM = {
     missing_days:['Vie 2 Oct','Sáb 3 Oct','Lun 5 Oct','Jue 8 Oct','Vie 9 Oct','Sáb 10 Oct','Mar 13 Oct','Sáb 17 Oct','Sáb 24 Oct','Mar 27 Oct','Sáb 31 Oct']
   },
   noviembre: {
-    label:'Noviembre 2026 (al 11 nov)', habil:8, sent:5, missing:3,
+    label:'Noviembre 2026 (al 17 nov)', habil:12, sent:8, missing:4,
     color:'#0f766e', colorBg:'#ccfbf1',
-    missing_days:['Mar 3 Nov','Sáb 7 Nov','Mar 10 Nov']
+    missing_days:['Mar 3 Nov','Sáb 7 Nov','Mar 10 Nov','Sáb 14 Nov']
   },
   total: {
-    label:'Acumulado', habil:147, sent:109, missing:38,
+    label:'Acumulado', habil:151, sent:112, missing:39,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -1741,8 +1774,10 @@ const WEEKS = [
     {d:'Lun 26 Oct',s:'ok'},{d:'Mar 27 Oct',s:'missing'},{d:'Mié 28 Oct',s:'ok'},{d:'Jue 29 Oct',s:'ok'},{d:'Vie 30 Oct',s:'ok'},{d:'Sáb 31 Oct',s:'missing'}]},
   {label:'Sem 2 Nov', sent:3,total:5, days:[
     {d:'Mar 3 Nov',s:'missing'},{d:'Mié 4 Nov',s:'ok'},{d:'Jue 5 Nov',s:'ok'},{d:'Vie 6 Nov',s:'ok'},{d:'Sáb 7 Nov',s:'missing'}]},
-  {label:'Sem 9 Nov', sent:2,total:6, days:[
-    {d:'Lun 9 Nov',s:'ok'},{d:'Mar 10 Nov',s:'missing'},{d:'Mié 11 Nov',s:'ok'},{d:'Jue 12 Nov',s:'missing'},{d:'Vie 13 Nov',s:'missing'},{d:'Sáb 14 Nov',s:'missing'}]},
+  {label:'Sem 9 Nov', sent:4,total:6, days:[
+    {d:'Lun 9 Nov',s:'ok'},{d:'Mar 10 Nov',s:'missing'},{d:'Mié 11 Nov',s:'ok'},{d:'Jue 12 Nov',s:'ok'},{d:'Vie 13 Nov',s:'ok'},{d:'Sáb 14 Nov',s:'missing'}]},
+  {label:'Sem 16 Nov', sent:1,total:5, days:[
+    {d:'Mar 17 Nov',s:'ok'},{d:'Mié 18 Nov',s:'missing'},{d:'Jue 19 Nov',s:'missing'},{d:'Vie 20 Nov',s:'missing'},{d:'Sáb 21 Nov',s:'missing'}]},
 ];
 
 const MISSING_DAYS = [
@@ -1788,11 +1823,11 @@ const MISSING_DAYS = [
 // Lun=0 Mar=1 Mié=2 Jue=3 Vie=4 Sáb=5
 const DOW_STATS = [
   {n:'Lunes',      total:24,sent:14},
-  {n:'Martes',     total:30,sent:21},
+  {n:'Martes',     total:31,sent:22},
   {n:'Miércoles',  total:29,sent:28},
-  {n:'Jueves',     total:27,sent:20},
-  {n:'Viernes',    total:26,sent:22},
-  {n:'Sábado',     total:26,sent:0},
+  {n:'Jueves',     total:28,sent:21},
+  {n:'Viernes',    total:27,sent:23},
+  {n:'Sábado',     total:27,sent:0},
 ];
 
 let cCumBar=null, cRingMayo=null, cRingJunio=null, cRingJulio=null, cRingAgosto=null, cRingTotal=null;
@@ -1857,9 +1892,9 @@ function buildCumplimiento(){
   // Impacto
   const avg=90;
   document.getElementById('impacto-grid').innerHTML=[
-    {l:'Días hábiles sin base', n:38, col:'#c0392b'},
-    {l:'Citas est. sin confirmar',n:'~3.420',col:'#d4820a'},
-    {l:'Pacientes no contactados',n:'~2.736',  col:'#6a3db8'},
+    {l:'Días hábiles sin base', n:39, col:'#c0392b'},
+    {l:'Citas est. sin confirmar',n:'~3.510',col:'#d4820a'},
+    {l:'Pacientes no contactados',n:'~2.808',  col:'#6a3db8'},
   ].map(x=>`<div class="br" style="padding:6px 0;border-bottom:1px solid var(--border);">
     <div class="bl" style="width:180px;">${x.l}</div>
     <div style="flex:1;font-size:20px;font-weight:900;color:${x.col};text-align:right;">${x.n}</div>
