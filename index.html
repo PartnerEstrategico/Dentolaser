@@ -207,7 +207,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <option value="agosto">Agosto 2026 (1 día)</option>
               <option value="septiembre">Septiembre 2026 (20 días)</option>
     <option value="octubre">Octubre 2026 (15 días)</option>
-    <option value="noviembre">Noviembre 2026 (8 días)</option>
+    <option value="noviembre">Noviembre 2026 (9 días)</option>
     <option value="todos">Todos los períodos</option>
     <option value="fecha" selected>Fecha específica</option>
     <option value="rango">Rango personalizado</option>
@@ -270,7 +270,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1111">11 nov 2026</option>
 <option value="1112">12 nov 2026</option>
 <option value="1113">13 nov 2026</option>
-<option value="1117" selected>17 nov 2026</option>
+<option value="1117">17 nov 2026</option>
+<option value="1118" selected>18 nov 2026</option>
     </select>
   </div>
   <div id="rango-wrap" class="fdate-wrap">
@@ -332,6 +333,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1112">12 nov 2026</option>
 <option value="1113">13 nov 2026</option>
 <option value="1117">17 nov 2026</option>
+<option value="1118">18 nov 2026</option>
     </select>
     <label>Hasta:</label>
     <select class="fsel" id="rango-hasta" onchange="applyFilter()">
@@ -390,7 +392,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <option value="1111">11 nov 2026</option>
 <option value="1112">12 nov 2026</option>
 <option value="1113">13 nov 2026</option>
-<option value="1117" selected>17 nov 2026</option>
+<option value="1117">17 nov 2026</option>
+<option value="1118" selected>18 nov 2026</option>
     </select>
   </div>
   <span class="pill-b" id="pill-citas">—</span>
@@ -536,7 +539,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 <!-- ══ CUMPLIMIENTO ══ -->
 <div class="page" id="p-cumplimiento">
-  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 17 NOVIEMBRE 2026</p>
+  <p class="lbl">CUMPLIMIENTO DE ENVÍO DE BASE · A HOY 18 NOVIEMBRE 2026</p>
 
   <!-- Comparativo por mes -->
   <p class="lbl">COMPARATIVO POR MES</p>
@@ -614,7 +617,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <div class="cum-month-card" style="border-color:#d4820a;">
       <div class="cmh" style="background:#7a4800;">
         <span class="cmh-title">Acumulado</span>
-        <span class="cmh-sub">4 may → 17 nov 2026</span>
+        <span class="cmh-sub">4 may → 18 nov 2026</span>
       </div>
       <div class="cmb">
         <div class="cm-ring-wrap"><canvas id="ring-total" width="110" height="110"></canvas><div class="cm-ring-center" id="ring-total-lbl"></div></div>
@@ -627,8 +630,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <div class="card hl-r">
     <div class="ch"><span class="ct">⚠ Alerta gerencial</span><span class="bdg b-r">39 días sin envío</span></div>
     <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">
-      De <strong>151 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>112</strong>.
-      El <strong>25.8%</strong> de los días laborables no se confirmaron citas.
+      De <strong>152 días hábiles</strong> transcurridos (lun–sáb, excluyendo festivos Colombia), solo se recibió base en <strong>113</strong>.
+      El <strong>25.7%</strong> de los días laborables no se confirmaron citas.
     </p>
     <div class="ar">🔴 <strong>Patrón crítico:</strong> Los <strong>sábados</strong> tienen 0% de cumplimiento (0 de 20). <strong>Lunes y jueves</strong> presentan el mayor incumplimiento en días hábiles. La semana del 25–30 mayo fue la peor: solo 2 de 6 bases enviadas. Octubre cerró con <strong>11 de 26 días hábiles sin base</strong> (2, 3, 5, 8, 9, 10, 13, 17, 24, 27 y 31 de octubre). En noviembre van sin base el <strong>3, 7, 10 y 14 de noviembre</strong>.</div>
     <div class="aa" style="margin-top:8px;">💰 <strong>Impacto estimado:</strong> ~3.510 citas (39 días × 90 promedio) no recibieron llamada de confirmación automatizada. Con un contact ratio del 80%, aproximadamente <strong>2.808 pacientes</strong> no fueron contactados.</div>
@@ -1262,16 +1265,24 @@ const DATA = {
     doc:{smb:27,jdcp:0,dcce:0,jcpg:24,mb:0,rm:21,mra:23,yetm:13,cvb:0,jec:0,mido:0,yimo:0,other:0},
     act:{'Valoración':20,'P. Enfilado':19,'Imp. Preliminar':16,'Entrega Prótesis':15,'Control':15,'P. Rodete':11,'Imp. Definitiva':6,'Entrega de Placa':4,'Raspaje y Alisado':1,'Rebases':1}
   },
+  '1118':{
+    label:'18 nov',total:125,answered:89,vm:10,na:18,busy:2,invalid:3,noring:3,
+    will:61,wont:7,ignored:21,
+    dur:[1,4,58,26],
+    p1:125,p2:42,p3:7,only1:83,
+    doc:{smb:19,jdcp:0,dcce:16,jcpg:21,mb:0,rm:14,mra:25,yetm:0,cvb:10,jec:0,mido:20,yimo:0,other:0},
+    act:{'P. Enfilado':25,'Valoración':24,'Entrega Prótesis':24,'P. Rodete':21,'Control':12,'Imp. Preliminar':12,'Imp. Definitiva':7}
+  },
 };
 
-const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030','1104','1105','1106','1109','1111','1112','1113','1117'];
+const ALL_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528','602','603','604','605','610','611','617','618','619','622','623','626','630','701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731','803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831','901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930','1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030','1104','1105','1106','1109','1111','1112','1113','1117','1118'];
 const MAYO_DAYS=['504','505','506','508','512','513','515','519','520','522','527','528'];
 const JUNIO_DAYS=['602','603','604','605','610','611','617','618','619','622','623','626','630'];
 const JULIO_DAYS=['701','703','706','707','708','709','710','715','716','717','723','724','727','729','730','731'];
 const AGOSTO_DAYS=['803','804','805','806','810','811','812','813','814','818','819','820','821','825','826','828','831'];
 const SEPTIEMBRE_DAYS=['901','902','903','904','907','908','909','911','914','915','916','917','918','922','923','924','925','928','929','930'];
 const OCTUBRE_DAYS=['1001','1006','1007','1014','1015','1016','1019','1020','1021','1022','1023','1026','1028','1029','1030'];
-const NOVIEMBRE_DAYS=['1104','1105','1106','1109','1111','1112','1113','1117'];
+const NOVIEMBRE_DAYS=['1104','1105','1106','1109','1111','1112','1113','1117','1118'];
 
 // Doctors: real names + distinct palette (NOT all blues)
 const DOC_KEYS  =['smb','jdcp','dcce','jcpg','mb','rm','mra','yetm','cvb','jec','mido','yimo','other'];
@@ -1693,12 +1704,12 @@ const MONTHS_CUM = {
     missing_days:['Vie 2 Oct','Sáb 3 Oct','Lun 5 Oct','Jue 8 Oct','Vie 9 Oct','Sáb 10 Oct','Mar 13 Oct','Sáb 17 Oct','Sáb 24 Oct','Mar 27 Oct','Sáb 31 Oct']
   },
   noviembre: {
-    label:'Noviembre 2026 (al 17 nov)', habil:12, sent:8, missing:4,
+    label:'Noviembre 2026 (al 18 nov)', habil:13, sent:9, missing:4,
     color:'#0f766e', colorBg:'#ccfbf1',
     missing_days:['Mar 3 Nov','Sáb 7 Nov','Mar 10 Nov','Sáb 14 Nov']
   },
   total: {
-    label:'Acumulado', habil:151, sent:112, missing:39,
+    label:'Acumulado', habil:152, sent:113, missing:39,
     color:'#7a4800', colorBg:'#fef3c7',
     missing_days:[]
   }
@@ -1776,8 +1787,8 @@ const WEEKS = [
     {d:'Mar 3 Nov',s:'missing'},{d:'Mié 4 Nov',s:'ok'},{d:'Jue 5 Nov',s:'ok'},{d:'Vie 6 Nov',s:'ok'},{d:'Sáb 7 Nov',s:'missing'}]},
   {label:'Sem 9 Nov', sent:4,total:6, days:[
     {d:'Lun 9 Nov',s:'ok'},{d:'Mar 10 Nov',s:'missing'},{d:'Mié 11 Nov',s:'ok'},{d:'Jue 12 Nov',s:'ok'},{d:'Vie 13 Nov',s:'ok'},{d:'Sáb 14 Nov',s:'missing'}]},
-  {label:'Sem 16 Nov', sent:1,total:5, days:[
-    {d:'Mar 17 Nov',s:'ok'},{d:'Mié 18 Nov',s:'missing'},{d:'Jue 19 Nov',s:'missing'},{d:'Vie 20 Nov',s:'missing'},{d:'Sáb 21 Nov',s:'missing'}]},
+  {label:'Sem 16 Nov', sent:2,total:5, days:[
+    {d:'Mar 17 Nov',s:'ok'},{d:'Mié 18 Nov',s:'ok'},{d:'Jue 19 Nov',s:'missing'},{d:'Vie 20 Nov',s:'missing'},{d:'Sáb 21 Nov',s:'missing'}]},
 ];
 
 const MISSING_DAYS = [
@@ -1824,7 +1835,7 @@ const MISSING_DAYS = [
 const DOW_STATS = [
   {n:'Lunes',      total:24,sent:14},
   {n:'Martes',     total:31,sent:22},
-  {n:'Miércoles',  total:29,sent:28},
+  {n:'Miércoles',  total:30,sent:29},
   {n:'Jueves',     total:28,sent:21},
   {n:'Viernes',    total:27,sent:23},
   {n:'Sábado',     total:27,sent:0},
